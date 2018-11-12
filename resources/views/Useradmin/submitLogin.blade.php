@@ -33,7 +33,10 @@
 								<div class="logo text-center"><img src="assets/img/stockx.png" alt="stockx Logo"></div>
 								<p class="lead">{{ __('Login to your account') }}</p>
 							</div>
-							<form class="form-auth-small" method="POST" action="{{ URL::to('/adminafterLogin') }}">
+							@if(Session::has('message'))
+							<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+							@endif
+							<form class="form-auth-small" method="POST" action="{{ URL::to('admin/afterLogin') }}">
 							{{ csrf_field() }}
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>

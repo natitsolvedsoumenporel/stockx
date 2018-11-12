@@ -15,8 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', 'UseradminController@submitLogin');
-Route::get('/admindashboard', 'UseradminController@admindashboard');
-Route::get('/adminlogout', 'UseradminController@adminlogout');
-Route::get('/admineditprofile', 'UseradminController@admineditprofile');
-Route::post('/adminafterLogin', 'UseradminController@login');
+
+Route::group(['prefix'=>'admin',], function(){
+    Route::get('/', ['as' => 'index', 'uses' => 'UseradminController@submitLogin']);
+    Route::post('/afterLogin', 'UseradminController@login');
+    Route::get('/logout', 'UseradminController@logout');
+    Route::get('/dashboard', 'UseradminController@dashboard')->middleware('is_admin');
+    Route::get('profile', ['as' => 'profile', 'uses' => 'UseradminController@profile'])->middleware('is_admin');
+    Route::post('/profilesave', 'UseradminController@profilesave')->middleware('is_admin');
+});
+
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -4,90 +4,90 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use DB;
+use Illuminate\Support\Facades\Redirect;
+use PHPUnit\Framework\Constraint\Exception;
 use Hash;
 use Auth;
 use Session;
 use Validator;
-use PHPUnit\Framework\Constraint\Exception;
+use App\User;
+
 
 class UseradminController extends Controller
 {
     public function __construct()
     {
-      //parent::__construct();
+        $this->middleware('auth')->except(['submitLogin','login']);
     }
     
-    public function submitLogin(){
-        
-        //echo 1;exit;
-        return view('Useradmin.submitLogin');
-    }
-    
-    public function login(Request $request)
-    {
 
-        $userdata = $request->all();
-        //print_r($userdata);exit;
-        $condition = ['email'=>$request->input('email') , 'password'=> md5($request->input('password'))];
-        $user = DB::table('users')->where($condition)->first();
-        //print_r($user); exit;
-        if(!empty($user)){
-            Session::put('id', $user->id);
-            Session::put('email', $user->email);
-            Session::put('name', $user->first_name);
-            
-            Session::flash('message', 'Successfully Logged In.');
-            return redirect('/admindashboard');
-            
-        }else{
-            Session::flash('message', 'Invalid Email ID or Password');
-            return redirect('/admin');
+    public function submitLogin(){
+        if(Auth::user()){
+            return redirect('admin/dashboard');
+        } else {
+            return view('Useradmin.submitLogin');
         }
         
     }
     
-    public function admindashboard(){
-        //echo "in dashboard"; exit;
-       $all_session = session()->all();
-       $email = $all_session['email'];
-       if(!empty($email)){
-           $condition = ['email' => $email];
-           $fetch_details = DB::table('users')->where($condition)->first();
-           //print_r($fetch_details); exit;
-           $user_type = $fetch_details->user_type;
-           if($user_type != 99){
-                Session::flash('message', 'Permission Denied');
-                return redirect('/admin');
-           }else{
-               return view('Useradmin.admindashboard');
-           }
-           
-       }else{
-           Session::flash('message', 'Invalid Email ID or Password');
-           return redirect('/admin');
-       }
-       //print_r($all_session);exit;
+
+    public function login(Request $request)
+    {   
+        $userdata = $request->all();
+        $condition = ['email'=>$request->input('email') , 'password'=> ($request->input('password'))];
         
+        $user = DB::table('users')->where($condition)->first();
+        if(Auth::attempt($condition)){
+            Session::flash('message', 'Successfully Logged In.');
+            return redirect('admin/dashboard');
+        }else{
+            Session::flash('message', 'Invalid Email ID or Password');
+            return redirect('/admin');
+        }
     }
+
     
-    public function admineditprofile(){
-       $all_session = session()->all();
-       $email = $all_session['email'];
-       if(!empty($email)){
-           $condition = ['email' => $email];
-           $fetch_details = DB::table('users')->where($condition)->first();
-           return view('Useradmin.admindashboard',['admin_details'=>$fetch_details]);
-           
-       }else{
-           Session::flash('message', 'Invalid Email ID or Password');
-           return redirect('/admin');
-       }
+    public function dashboard(){
+        return view('Useradmin.admindashboard');
+       
     }
+
+
     
-    public function adminlogout(){
+    public function profile(){
+        $user = User::find(Auth::user()->id); 
+        return view('Useradmin.profile',compact('user'));
+    }
+
+
+    public function profilesave(Request $request, User $user) {
+        
+        $user = Auth::user()->id; 
+        $input = request()->except(['_token','hideimg']);
+
+        if ($request->hasFile('image')) {
+            try {
+                $file = $request->file('image');
+                $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                # save to DB
+                $input['image'] = 'images/users/'.$name;
+                $request->file('image')->move("images/users", $name);
+            } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            $input['image'] = $request->input('hideimg');
+        }
+        
+        User::where('id', $user)->update($input);
+        return Redirect::back();
+    
+    }
+
+
+    
+    public function logout(){
         Auth::logout();
-        Session::flush();
         Session::flash('message', 'Successfully Logged out.');
         return redirect('/admin');
     }

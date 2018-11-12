@@ -12,8 +12,8 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="{{ URL::to('/admineditprofile') }}" class="">Profile</a></li>
-									<li><a href="{{ URL::to('/adminlogout') }}" class="">Logout</a></li>
+									<li><a href="{{ URL::to('admin/profile') }}" class="">Profile</a></li>
+									<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>
 								</ul>
 							</div>
 						</li>

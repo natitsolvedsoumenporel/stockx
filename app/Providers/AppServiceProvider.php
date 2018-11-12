@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        view()->composer('*', function ($view) 
+        {
+            if(Auth::user()){
+                $view->with('userImage', Auth::user()->image);  
+            }
+
+            //...with this variable
+             
+        });  
+        
     }
 
     /**
