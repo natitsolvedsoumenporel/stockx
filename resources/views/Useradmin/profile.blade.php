@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    @include('includes.head')
-</head>
-<body>
-    <div id="wrapper">
-        @include('includes.header')
-        @include('includes.sidebar')
-        <div class="main">
+@extends('layouts.app')
+@section('content')
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
@@ -17,7 +9,7 @@
                         {{ csrf_field() }}
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Inputs</h3>
+                                <h3 class="panel-title">Edit Profile</h3>
                             </div>
                             <div class="panel-body">
                                 {{Form::label('first_name', 'First Name')}}
@@ -52,9 +44,4 @@
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
-		</div>    
-        @include('includes.footer')
-    </div> 
-    @include('includes.footerscript')
-</body>
-</html>
+		@endsection

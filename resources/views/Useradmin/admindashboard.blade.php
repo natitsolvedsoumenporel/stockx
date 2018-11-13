@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    @include('includes.head')
-</head>
-<body>
-    <div id="wrapper">
-        @include('includes.header')
-        @include('includes.sidebar')
-        <div class="main">
+@extends('layouts.app')
+@section('content')
             <div class="main-content">
                 <div class="container-fluid">
                     @if(Session::has('message'))
@@ -366,9 +358,4 @@
                     </div>
                 </div>
             </div>
-        </div>    
-        @include('includes.footer')
-    </div> 
-    @include('includes.footerscript')
-</body>
-</html>
+        @endsection

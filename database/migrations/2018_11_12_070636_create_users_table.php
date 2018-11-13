@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->char('first_name', 100)->nullable($value = true);
             $table->char('last_name', 100)->nullable($value = true);
             $table->integer('is_active');
-            $table->char('image',255)->nullable($value = true);
+            $table->text('image')->nullable($value = true);
             $table->char('phone',255)->nullable($value = true);
+            $table->integer('user_type');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -37,6 +38,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('admins');
     }
 }

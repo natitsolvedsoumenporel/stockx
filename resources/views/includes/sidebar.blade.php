@@ -3,7 +3,9 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="{{ URL::to('/admindashboard') }}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="{{ URL::to('admin/dashboard') }}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="{{ URL::to('admin/listcategory') }}" class="active"><i class="lnr lnr-code"></i> <span>Manage Parent Category</span></a></li>
+						<li><a href="{{ URL::to('admin/listsubcategory') }}" class="active"><i class="lnr lnr-code"></i> <span>Manage Sub Category</span></a></li>
 <!--						<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
 						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
 						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Panels</span></a></li>
@@ -13,6 +15,7 @@
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="{{ URL::to('admin/profile') }}" class="">Profile</a></li>
+									<li><a href="{{ URL::to('admin/listcategory') }}" class="">Manage Category</a></li>
 									<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>
 								</ul>
 							</div>
