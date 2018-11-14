@@ -23,6 +23,7 @@
                                         <th>#</th>
                                         <th>Category Image</th>
                                         <th>Category Name</th>
+                                        <th>Parent Category Name</th>
                                         <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -32,23 +33,25 @@
                                     
                                     @foreach($sub_category as $pcat)
                                         <tr>
-                                            <td>{{$pcat->cat_id}}</td>
-                                            @if($pcat->image != '')
-                                                <td><img height="50px" width="50px" src="{{URL::to('/').'/'.$pcat->image}}" alt="" ></td>
+                                            <td>{{$pcat['cat_id']}}</td>
+                                            @if($pcat['image'] != '')
+                                                <td><img height="50px" width="50px" src="{{URL::to('/').'/'.$pcat['image']}}" alt="" ></td>
                                             @else
                                                 <td>No image</td>
                                             @endif
-                                            <td>{{$pcat->category_name}}</td>
-                                            @if($pcat->is_active == 1)
+                                            <td>{{$pcat['category_name']}}</td>
+                                            <?php //print_r($pcat); ?>
+                                            <td>{{$pcat['parentcategory']['category_name']}}</td>
+                                            @if($pcat['is_active'] == 1)
                                                 <td>active</td>
                                             @else
                                                 <td>inactive</td>
                                             @endif
-                                            <td>{{$pcat->created_at}}</td>
+                                            <td>{{$pcat['created_at']}}</td>
                                             <td>
-                                                <a href="{{ url('admin/editsubcategory') }}/<?php echo base64_encode($pcat->cat_id); ?>" class="btn btn-success"><i class="lnr lnr-pencil"></i> <span>Edit</span></a>
+                                                <a href="{{ url('admin/editsubcategory') }}/<?php echo base64_encode($pcat['cat_id']); ?>" class="btn btn-success"><i class="lnr lnr-pencil"></i> <span>Edit</span></a>
                                                 
-                                                <a href="javascript:void(0);" onclick="var result = confirm('Want to delete?'); if (result) { window.location.href = '{{ url('admin/deletecategory') }}'+'/'+'<?php echo base64_encode($pcat->cat_id); ?>'; }" class="btn btn-danger"><i class="lnr lnr-cross"></i> <span>Delete</span></a>
+                                                <a href="javascript:void(0);" onclick="var result = confirm('Want to delete?'); if (result) { window.location.href = '{{ url('admin/deletecategory') }}'+'/'+'<?php echo base64_encode($pcat['cat_id']); ?>/'+'<?php echo base64_encode('subdel');?>'; }" class="btn btn-danger"><i class="lnr lnr-cross"></i> <span>Delete</span></a>
                                             </td>
                                         </tr>
                                     @endforeach

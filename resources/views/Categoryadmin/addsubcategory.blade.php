@@ -15,6 +15,11 @@
                                 {{ Form::text('category_name', null, array('class' => 'form-control' )) }}
                                 <!-- <input type="text" class="form-control" placeholder="text field"> -->
                                 <br>
+                                
+                                {{Form::label('parent_id', 'Parent Category')}}
+                                {{Form::select('parent_id', $parent_category,null,array('class' => 'form-control' ))}}
+
+                                <br>
                                 {{Form::label('description', 'Description')}}
                                 {{ Form::textarea('description', null, array('class' => 'form-control' )) }}
                                 <!-- <input type="text" class="form-control" placeholder="text field"> -->
@@ -25,9 +30,9 @@
                                 <br>
                                 
                                 <label for="is_active">Status</label>
-                                <input class="form-control" name="is_active"  id="is_active" type="checkbox">
+                                <input class="" name="is_active"  id="is_active" type="checkbox">
                                 
-                               
+                                <br>
                                 
                                 {{Form::submit('Save',array('class'=>'btn text-center'))}}
                             </div>

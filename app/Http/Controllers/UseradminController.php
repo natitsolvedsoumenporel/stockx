@@ -123,7 +123,119 @@ class UseradminController extends Controller
         return Redirect::back();
     }
 
-
+    public function listusers(){
+        $user = User::find(Auth::user()->id);
+        
+        $user_details = User::where('user_type','!=',99)->get()->toArray();
+        //print_r($user_details); exit;
+        return view('Useradmin.listuser',compact('user','user_details'));
+    }
+    
+    public function adduser(){
+        $user = User::find(Auth::user()->id);
+        $user = array();
+        return view('Useradmin.adduser',compact('user'));
+    }
+    
+    public function edituser($user_id){
+        $user = User::find(base64_decode($user_id));
+        //print_r($user); exit;
+        //$user = array();
+        return view('Useradmin.edituser',compact('user'));
+    }
+    public function viewuser($user_id){
+        $user = User::find(base64_decode($user_id))->toArray();
+        //print_r($user); exit;
+        
+        return view('Useradmin.viewuser',compact('user'));
+    }
+    public function statususer($user_id){
+        $user = User::find(base64_decode($user_id))->toArray();
+        //print_r($user); exit;
+        $status = $user['approve'];
+        if($status == 0){
+            $data['approve']=1;
+        }else{
+            $data['approve']=0;
+        }
+        DB::table('users')->where("id",base64_decode($user_id))->update($data);
+        return redirect('admin/listusers');
+    }
+    
+    public function saveuseredit(Request $request,$u_id){
+        
+        $input = request()->except(['_token','hideimg']);
+        $user_id = base64_decode($u_id); 
+        if ($request->hasFile('image')) {
+            try {
+                $file = $request->file('image');
+                $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                # save to DB
+                $input['image'] = 'images/category/'.$name;
+                $request->file('image')->move("images/category", $name);
+            } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            $input['image'] = $request->input('hideimg');
+        }
+        
+        if($request->input('is_active')){
+            $input['is_active'] = 1;
+        }else{
+            $input['is_active'] = 0;
+        }
+        $input['password']= Hash::make($request->input('password'));
+        
+        $input['updated_at']= date('Y-m-d H:i:s');
+        //print_r($input);exit;
+        DB::table('users')->where("id",$user_id)->update($input);
+        
+        Session::flash('message', 'User is successfully edited.');
+        //return Redirect::back();
+        return redirect('admin/listusers');
+    }
+    
+    public function saveuser(Request $request){
+        $user = Auth::user()->id; 
+        $input = request()->except(['_token']);
+        if ($request->hasFile('image')) {
+            try {
+                $file = $request->file('image');
+                $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                # save to DB
+                $input['image'] = 'images/users/'.$name;
+                $request->file('image')->move("images/users", $name);
+            } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            $input['image'] = "";
+        }
+        
+        if($request->input('is_active')){
+            $input['is_active'] = 1;
+        }else{
+            $input['is_active'] = 0;
+        }
+        
+        $input['password'] = Hash::make($request->input('password'));
+        $input['created_at']= date('Y-m-d H:i:s');
+        
+        
+        //print_r($input); exit;
+        
+        DB::table('users')->insert($input);
+        
+        Session::flash('message', 'User is successfully added.');
+        return redirect('admin/listusers');
+    }
+    
+    public function deleteuser($us_id){
+        $user_id = base64_decode($us_id); 
+        DB::table('users')->where("id",$user_id)->delete();
+        return redirect('admin/listusers');
+    }
     
     public function logout(){
         Auth::logout();

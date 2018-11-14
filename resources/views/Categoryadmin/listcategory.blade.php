@@ -48,7 +48,7 @@
                                             <td>
                                                 <a href="{{ url('admin/editcategory') }}/<?php echo base64_encode($pcat->cat_id); ?>" class="btn btn-success"><i class="lnr lnr-pencil"></i> <span>Edit</span></a>
                                                 
-                                                <a href="javascript:void(0);" onclick="var result = confirm('Want to delete?'); if (result) { window.location.href = '{{ url('admin/deletecategory') }}'+'/'+'<?php echo base64_encode($pcat->cat_id); ?>'; }" class="btn btn-danger"><i class="lnr lnr-cross"></i> <span>Delete</span></a>
+                                                <a href="javascript:void(0);" onclick=" var result = confirm('Want to delete?'); if (result) { window.location.href = '{{ url('admin/deletecategory') }}'+'/'+'<?php echo base64_encode($pcat->cat_id); ?>/'+'<?php echo base64_encode('catedel'); ?>'; }" class="btn btn-danger"><i class="lnr lnr-cross"></i> <span>Delete</span></a>
                                             </td>
                                         </tr>
                                     @endforeach

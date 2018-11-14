@@ -24,12 +24,12 @@ class CategoryadminController extends Controller
     }
     
     public function listsubcategory(){
-        $user = User::find(Auth::user()->id); 
-        //$condition =['parent_id !='=> 0];
-        $sub_category = DB::table('allcategory')->where('parent_id','!=',0)->get();
+       $user = User::find(Auth::user()->id); 
         
-        //print_r($parent_category);exit;
-        return view('Categoryadmin.listsubcategory',compact('user','sub_category'));
+       //$sub_category = DB::table('allcategory')->where('parent_id','!=',0)->get();
+       $sub_category =  allcategory::with('parentcategory')->where('parent_id','!=',0)->get()->toArray();    
+       
+       return view('Categoryadmin.listsubcategory',compact('user','sub_category'));
     }
     
     
@@ -42,7 +42,9 @@ class CategoryadminController extends Controller
     public function addsubcategory(){
         $user = User::find(Auth::user()->id); 
         $category = [];
-        return view('Categoryadmin.addsubcategory',compact('user','category'));
+        $condition =['parent_id'=> 0];
+        $parent_category = allcategory::where($condition)->pluck('category_name','cat_id');
+        return view('Categoryadmin.addsubcategory',compact('user','category','parent_category'));
     }
     
     public function editcategory($cate_id){
@@ -58,10 +60,11 @@ class CategoryadminController extends Controller
         $user = User::find(Auth::user()->id); 
         $cat_id = base64_decode($cate_id);
         $allcategory = [];
-        
         $allcategory = DB::table('allcategory')->where("cat_id",$cat_id)->first();
-        //print_r($allcategory); exit;
-        return view('Categoryadmin.editcategory',compact('user','allcategory'));
+        
+        $condition =['parent_id'=> 0];
+        $parent_category = allcategory::where($condition)->pluck('category_name','cat_id');
+        return view('Categoryadmin.editsubcategory',compact('user','allcategory','parent_category'));
     }
     
     public function saveparentcat(Request $request){
@@ -94,7 +97,6 @@ class CategoryadminController extends Controller
         DB::table('allcategory')->insert($input);
         
         Session::flash('message', 'Parent Category is successfully added.');
-        //return Redirect::back();
         return redirect('admin/listcategory');
     }
     
@@ -152,7 +154,6 @@ class CategoryadminController extends Controller
             $input['is_active'] = 0;
         }
         $input['created_at']= date('Y-m-d H:i:s');
-        $input['parent_id'] = 1;
         $input['category_type'] = 'parent';
         
         //print_r($input); exit;
@@ -193,14 +194,18 @@ class CategoryadminController extends Controller
         DB::table('allcategory')->where("cat_id",$cat_id)->update($input);
         
         Session::flash('message', 'Parent Category is successfully edited.');
-        //return Redirect::back();
         return redirect('admin/listsubcategory');
     }
     
-    public function deletecategory($cat_id){
+    public function deletecategory($cat_id,$cat_type){
         $user = Auth::user()->id; 
         $cat_id = base64_decode($cat_id); 
+        $cat_type = base64_decode($cat_type); 
         DB::table('allcategory')->where("cat_id",$cat_id)->delete();
-        return redirect('admin/listcategory');
+        if($cat_type == "subdel"){
+            return redirect('admin/listsubcategory');
+        }else{
+            return redirect('admin/listcategory');
+        }
     }
 }

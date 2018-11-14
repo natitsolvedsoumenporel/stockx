@@ -33,9 +33,9 @@
                                 <br>
                                 
                                 <label for="is_active">Status</label>
-                                <input class="form-control" name="is_active" <?php if($allcategory->is_active == 1){ ?>checked<?php }?> id="is_active" type="checkbox" >
+                                <input class="" name="is_active" <?php if($allcategory->is_active == 1){ ?>checked<?php }?> id="is_active" type="checkbox" >
                                 
-                               
+                                <br>
                                 
                                 {{Form::submit('Save',array('class'=>'btn text-center'))}}
                             </div>
