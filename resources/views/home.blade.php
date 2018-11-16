@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.home')
 
 @section('content')
 <section class="home-banner">

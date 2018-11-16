@@ -8,8 +8,8 @@
             <div class="row ml-0 mr-0">
                 <div class="col-lg-7 pl-0">
                     <div class="sign-up-lt">
-                        <a class="nav-link text-center" href="#">
-                            <img src="{{asset('assets/frontend/images/logo.png')}}" alt="" />
+                        <a class="nav-link text-center" href="{{ URL::to('/') }}">
+                            <img src="{{asset('assets/img/stockx.png')}}" alt="" />
                         </a>
                         <div class="sign-up-tab">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -22,24 +22,30 @@
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="sign-up" role="tabpanel" aria-labelledby="sign-up-tab">
-                                    <form class="sign-up-form">
+                                    
+                                    <form class="sign-up-form" id="signup_form" method="POST" action="{{ URL::to('/aftersignupfrontend') }}">
+                                        @if(Session::has('message'))
+                                            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                                        @endif
+                                        <br>
+                                        {{ csrf_field() }}
                                         <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="First Name">
+                                            <input type="text" class="form-control" name="first_name"  placeholder="First Name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="Last Name">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Username">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email Address">
+                                            <input type="text" class="form-control" name="last_name"  placeholder="Last Name">
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Password">
+                                            <input type="text" class="form-control" name="name" placeholder="Username">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="email" placeholder="Email Address">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password" placeholder="Password">
                                         </div>
                                         <!-- <small>You must use 8 or more characters with a mix of letters, numbers & symbols.</small> -->
                                         <p >
@@ -56,12 +62,12 @@
                                         </div>
 
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <input type="checkbox" name="agree" class="form-check-input" id="exampleCheck1" required="required">
                                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                         </div>
 
                                         <div class="text-center mt-4 mb-4">
-                                            <button type="button" class="btn btn-dark">Sign Up</button>
+                                            <input type="submit" class="btn btn-dark" value="Sign Up">
                                         </div>
                                     
                                         <p class="text-uppercase text-center">

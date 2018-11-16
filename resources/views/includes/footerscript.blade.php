@@ -1,63 +1,28 @@
-<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
 <script src="{{ asset('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/chartist/js/chartist.min.js') }}"></script>
 <script src="{{ asset('assets/scripts/klorofil-common.js') }}"></script>
 <script src="{{ asset('js/default.js') }}"></script>
-<script src="{{ asset('js/formValidation.js') }}"></script>
-
-<!--<script>
-    $(document).ready(function() {
-        //alert(1);return false;
-        $('#change_passfrom').formValidation({
-            framework: 'bootstrap',
-            excluded: ':disabled',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                'old_password': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The current password is required and cannot be empty'
-                        }//,
-    //                    regexp: {
-    //                        regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
-    //                        message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
-    //                    }
-                    }
-                },       
-                'new_password': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The new password is required and cannot be empty'
-                        }//,
-    //                    regexp: {
-    //                        regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
-    //                        message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
-    //                    }
-                    }
-                },
-                'confirm_password': {
-                    validators: {
-                      notEmpty: {
-                                message: 'The Confirm Password is required and cannot be empty'
-                            },
-                        identical: {
-                            field: 'new_password',
-                            message: 'The password and its confirm are not the same'
-                        }
-                    }
-                }
-
-
-            }
-        });
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('ckfinder/ckfinder_v1.js') }}"></script>
+@if(Request::segment(2) == 'editemail' || Request::segment(2) == 'addemail')
+<script>
+    
+    CKEDITOR.replace('content',
+    {
+        width: "95%"
     });
-</script>-->
+</script>
+@else
+<script>
+<?php //echo Request::segment(1); ?>
+    CKEDITOR.replace('description',
+    {
+        width: "95%"
+    });
+</script>
+@endif
 
 <script>
 	$(function() {

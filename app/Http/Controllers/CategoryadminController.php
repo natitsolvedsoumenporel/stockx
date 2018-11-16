@@ -203,8 +203,10 @@ class CategoryadminController extends Controller
         $cat_type = base64_decode($cat_type); 
         DB::table('allcategory')->where("cat_id",$cat_id)->delete();
         if($cat_type == "subdel"){
+            Session::flash('message', 'successfully deleted.');
             return redirect('admin/listsubcategory');
         }else{
+            Session::flash('message', 'successfully deleted.');
             return redirect('admin/listcategory');
         }
     }

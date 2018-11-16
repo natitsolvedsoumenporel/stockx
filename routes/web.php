@@ -17,7 +17,18 @@ Route::get('/', function () {
 });
 Route::get('/login', 'HomeController@login');
 Route::get('/signup', 'HomeController@signup');
+Route::get('/active/{id}', 'HomeController@active');
+Route::get('/recoveraccount/{id}', 'HomeController@recoveraccount');
+Route::get('/forgetpassword', 'HomeController@forgetpassword');
 Route::any('/afterloginfrontend', 'HomeController@afterloginfrontend');
+Route::any('/aftersignupfrontend', 'HomeController@aftersignupfrontend');
+Route::any('/changepassmailsend', 'HomeController@changepassmailsend');
+Route::any('/resetpassword', 'HomeController@resetpassword');
+Route::any('/profile', 'UserController@profile');
+Route::any('/savedetails', 'UserController@savedetails');
+Route::any('/savepass', 'UserController@savepass');
+Route::get('/editprofile', 'UserController@editprofile');
+Route::get('/profilepass', 'UserController@profilepass');
 Route::any('/logout', 'HomeController@logout');
 
 Route::group(['prefix'=>'admin',], function(){
@@ -26,6 +37,7 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('/logout', 'UseradminController@logout');
     Route::get('/dashboard', 'UseradminController@dashboard')->middleware('is_admin');
     Route::get('profile', ['as' => 'profile', 'uses' => 'UseradminController@profile'])->middleware('is_admin');
+    Route::get('editsite', ['as' => 'editsite', 'uses' => 'UseradminController@editsite'])->middleware('is_admin');
     Route::get('listusers', ['as' => 'listusers', 'uses' => 'UseradminController@listusers'])->middleware('is_admin');
     Route::get('adduser', ['as' => 'adduser', 'uses' => 'UseradminController@adduser'])->middleware('is_admin');
     Route::get('changepassword', ['as' => 'changepassword', 'uses' => 'UseradminController@changepassword'])->middleware('is_admin');
@@ -33,6 +45,10 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listcategory', ['as' => 'listcategory', 'uses' => 'CategoryadminController@listcategory'])->middleware('is_admin');
     Route::get('listsubcategory', ['as' => 'listsubcategory', 'uses' => 'CategoryadminController@listsubcategory'])->middleware('is_admin');
     Route::get('listattribute', ['as' => 'listattribute', 'uses' => 'AttributeController@listattribute'])->middleware('is_admin');
+    Route::get('listemail', ['as' => 'listemail', 'uses' => 'EmailtemplateController@listemail'])->middleware('is_admin');
+    
+    
+    
     Route::get('addparentcategory', ['as' => 'addparentcategory', 'uses' => 'CategoryadminController@addparentcategory'])->middleware('is_admin');
     Route::any('editcategory/{cate_id}', ['as' => 'editcategory', 'uses' => 'CategoryadminController@editcategory'])->middleware('is_admin');
     Route::get('addsubcategory', ['as' => 'addsubcategory', 'uses' => 'CategoryadminController@addsubcategory'])->middleware('is_admin');
@@ -41,12 +57,19 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('addattribute', ['as' => 'addattribute', 'uses' => 'AttributeController@addattribute'])->middleware('is_admin');
     Route::any('editattribute/{attribute_id}', ['as' => 'editattribute', 'uses' => 'AttributeController@editattribute'])->middleware('is_admin');
     
+    Route::get('addemail', ['as' => 'addemail', 'uses' => 'EmailtemplateController@addemail'])->middleware('is_admin');
+    Route::any('editemail/{email_id}', ['as' => 'editemail', 'uses' => 'EmailtemplateController@editemail'])->middleware('is_admin');
+    Route::post('/addemailsave', 'EmailtemplateController@addemailsave')->middleware('is_admin');
+    Route::post('/editemailsave/{email_id}', 'EmailtemplateController@editemailsave')->middleware('is_admin');
+    Route::any('/deleteemail/{email_id}', 'EmailtemplateController@deleteemail')->middleware('is_admin');
+    
     
     Route::any('viewuser/{ur_id}', ['as' => 'viewuser', 'uses' => 'UseradminController@viewuser'])->middleware('is_admin');
     Route::any('statususer/{ur_id}', ['as' => 'statususer', 'uses' => 'UseradminController@statususer'])->middleware('is_admin');
     Route::any('deleteuser/{ur_id}', ['as' => 'deleteuser', 'uses' => 'UseradminController@deleteuser'])->middleware('is_admin');
     
     Route::post('/profilesave', 'UseradminController@profilesave')->middleware('is_admin');
+    Route::post('/sitesave', 'UseradminController@sitesave')->middleware('is_admin');
     Route::post('/passwordsave', 'UseradminController@passwordsave')->middleware('is_admin');
     Route::post('/savepayment', 'UseradminController@savepayment')->middleware('is_admin');
     

@@ -1,24 +1,13 @@
 <!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-                            <a href="{{ URL::to('/admindashboard') }}"><img src="{{asset('assets/img/stockx.png')}}" alt="Stockx Logo" class="img-responsive logo" style="height: 25px;"></a>
+                            <a href="{{ URL::to('/admin/dashboard') }}"><img src="{{asset('assets/img/stockx.png')}}" alt="Stockx Logo" class="img-responsive logo" style="height: 25px;"></a>
 			</div>
 			<div class="container-fluid">
-<!--				<div class="navbar-btn">
-					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
-				</div>
-				<form class="navbar-form navbar-left">
-					<div class="input-group">
-						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
-					</div>
-				</form>-->
-				<!-- <div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-success update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-				</div> -->
+
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
+<!--						<li class="dropdown">
 							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
 								<i class="lnr lnr-alarm"></i>
 								<span class="badge bg-danger">5</span>
@@ -40,7 +29,7 @@
 								<li><a href="#">Security</a></li>
 								<li><a href="#">Troubleshooting</a></li>
 							</ul>
-						</li>
+						</li>-->
 						<li class="dropdown">
 							@if(!empty($userImage))
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset($userImage)}}" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
@@ -49,15 +38,12 @@
 							@endif
 							<ul class="dropdown-menu">
 								<li><a href="{{ URL::to('admin/profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="{{ URL::to('admin/changepassword') }}"><i class="lnr lnr-user"></i> <span>Change Password</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+								<li><a href="{{ URL::to('admin/changepassword') }}"><i class="lnr lnr-keyboard"></i> <span>Change Password</span></a></li>
+								<li><a href="{{ URL::to('admin/editsite') }}"><i class="lnr lnr-lock"></i> <span>Logo</span></a></li>
 								<li><a href="{{ URL::to('admin/paymentsetting') }}"><i class="lnr lnr-cog"></i> <span>Payment Settings</span></a></li>
 								<li><a href="{{ URL::to('admin/logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
 					</ul>
 				</div>
 			</div>

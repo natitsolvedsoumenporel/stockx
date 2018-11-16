@@ -5,6 +5,7 @@
 					<ul class="nav">
 						<li><a href="{{ URL::to('admin/dashboard') }}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="{{ URL::to('admin/listusers') }}" class="active"><i class="lnr lnr-users"></i> <span>Manage Users</span></a></li>
+						<li><a href="{{ URL::to('admin/listemail') }}" class="active"><i class="lnr lnr-envelope"></i> <span>Manage Email Templates</span></a></li>
 						<!--<li><a href="{{ URL::to('admin/listsubcategory') }}" class="active"><i class="lnr lnr-code"></i> <span>Manage Sub Category</span></a></li>-->
 <!--						<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
 						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
@@ -26,7 +27,7 @@
 								<ul class="nav">
 									<li><a href="{{ URL::to('admin/listattribute') }}" class="">Manage Attribute</a></li>
 									<li><a href="{{ URL::to('admin/addattribute') }}" class="">Add Attribute</a></li>
-									<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>
+									<!--<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>-->
 								</ul>
 							</div>
 						</li>

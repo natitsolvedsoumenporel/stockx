@@ -11,6 +11,7 @@ use Auth;
 use Session;
 use Validator;
 use App\User;
+use App\siteSetting;
 
 
 class UseradminController extends Controller
@@ -54,6 +55,12 @@ class UseradminController extends Controller
         return view('Useradmin.profile',compact('user'));
     }
     
+    public function editsite(){
+        $siteSetting = siteSetting::find(1);
+        //print_r($siteSetting); exit;
+        return view('Useradmin.editsite',compact('siteSetting'));
+    }
+    
     public function changepassword(){
         $user = User::find(Auth::user()->id); 
         return view('Useradmin.changepassword',compact('user'));
@@ -85,6 +92,32 @@ class UseradminController extends Controller
         
         User::where('id', $user)->update($input);
         Session::flash('message', 'Profile data is Successfully updated.');
+        return Redirect::back();
+    
+    }
+    
+    public function sitesave(Request $request) {
+        
+        //$user = Auth::user()->id; 
+        $input = request()->except(['_token','hideimg']);
+
+        if ($request->hasFile('logo')) {
+            try {
+                $file = $request->file('logo');
+                $name = rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                # save to DB
+                $input['logo'] = 'images/logo/'.$name;
+                $request->file('logo')->move("images/logo", $name);
+            } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            $input['logo'] = $request->input('hideimg');
+        }
+        $input['updated_at'] = date('Y-m-d H:i:s');
+        //print_r($input);exit;
+        siteSetting::where('id', '1')->update($input);
+        Session::flash('message', 'Site is Successfully updated.');
         return Redirect::back();
     
     }

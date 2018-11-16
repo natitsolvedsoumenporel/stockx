@@ -54,5 +54,176 @@
             }
         });
         
+        $('#forgetpass_form').formValidation({
+            framework: 'bootstrap',
+            excluded: ':disabled',
+            icon: {
+              valid: 'glyphicon glyphicon-ok',
+              invalid: 'glyphicon glyphicon-remove',
+              validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The email is required and cannot be empty'
+                        },
+                        emailAddress: {
+                            message: 'Please enter valid email'
+                        }
+                    }
+                }
+            }
+        });
+        
+        $('#resetpassword').formValidation({
+            framework: 'bootstrap',
+            excluded: ':disabled',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        regexp: {
+                            regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
+                            message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
+                        }
+                    }
+                },
+                confpassword: {
+                    validators: {
+                      notEmpty: {
+                                message: 'The Confirm Password is required and cannot be empty'
+                            },
+                        identical: {
+                            field: 'password',
+                            message: 'The password and its confirm are not the same'
+                        }
+                    }
+                }
+
+
+            }
+        });
+        
+        $('#signup_form').formValidation({
+            framework: 'bootstrap',
+            excluded: ':disabled',
+            icon: {
+              valid: 'glyphicon glyphicon-ok',
+              invalid: 'glyphicon glyphicon-remove',
+              validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The user name is required and cannot be empty'
+                        }
+                    }
+                },
+    //                       'last_name': {
+    //                            validators: {
+    //                                notEmpty: {
+    //                                    message: 'The last name is required and cannot be empty'
+    //                                }
+    //                            }
+    //                        },
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The email is required and cannot be empty'
+                        },
+                        emailAddress: {
+                            message: 'Please enter valid email'
+                        }
+                    }
+                },
+
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+
+                        regexp: {
+                            regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
+                            message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
+                        }
+                    }
+                },
+                agree: {
+                    validators: {
+                        notEmpty: {
+                            message: 'You must agree with the terms and conditions'
+                        }
+                    }
+                }
+
+            }
+        });
+        
+        $('#editpass').formValidation({
+            framework: 'bootstrap',
+            excluded: ':disabled',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+
+                currentpassword: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        regexp: {
+                            regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
+                            message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        regexp: {
+                            regexp: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$",
+                            message: 'Password must contain 1 uppercase,1 lowercase,1 number and 1 symbol and atleast 8 characters long'
+                        }
+                    }
+                },
+                confpassword: {
+                    validators: {
+                      notEmpty: {
+                                message: 'The Confirm Password is required and cannot be empty'
+                            },
+                        identical: {
+                            field: 'password',
+                            message: 'The password and its confirm are not the same'
+                        }
+                    }
+                }
+
+
+            }
+        });
+        
+        setTimeout(function(){ $(".alert-info").hide(); }, 5000);
+        
     });
+    
+    
+
+
+    
     </script>
