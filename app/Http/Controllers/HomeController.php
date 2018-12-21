@@ -56,6 +56,10 @@ class HomeController extends Controller
         }
     }
     
+    public function product_list(){
+        return view('Home/product_list');
+    }
+    
     public function afterloginfrontend(Request $request){
         
         $condition = ['email'=>$request->input('email') , 'password'=> ($request->input('password'))]; 

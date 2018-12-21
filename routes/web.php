@@ -29,6 +29,7 @@ Route::any('/savedetails', 'UserController@savedetails');
 Route::any('/savepass', 'UserController@savepass');
 Route::get('/editprofile', 'UserController@editprofile');
 Route::get('/profilepass', 'UserController@profilepass');
+Route::get('/product_list', 'HomeController@product_list');
 Route::any('/logout', 'HomeController@logout');
 
 Route::group(['prefix'=>'admin',], function(){
@@ -45,6 +46,8 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listcategory', ['as' => 'listcategory', 'uses' => 'CategoryadminController@listcategory'])->middleware('is_admin');
     Route::get('listsubcategory', ['as' => 'listsubcategory', 'uses' => 'CategoryadminController@listsubcategory'])->middleware('is_admin');
     Route::get('listattribute', ['as' => 'listattribute', 'uses' => 'AttributeController@listattribute'])->middleware('is_admin');
+    Route::get('listsize', ['as' => 'lissize', 'uses' => 'SizeController@listsize'])->middleware('is_admin');
+    Route::get('showsizelist/{shoesize}', ['as' => 'showsizelist', 'uses' => 'SizeController@showsizelist'])->middleware('is_admin');
     Route::get('listemail', ['as' => 'listemail', 'uses' => 'EmailtemplateController@listemail'])->middleware('is_admin');
     
     
@@ -56,6 +59,11 @@ Route::group(['prefix'=>'admin',], function(){
     Route::any('edituser/{user_id}', ['as' => 'edituser', 'uses' => 'UseradminController@edituser'])->middleware('is_admin');
     Route::get('addattribute', ['as' => 'addattribute', 'uses' => 'AttributeController@addattribute'])->middleware('is_admin');
     Route::any('editattribute/{attribute_id}', ['as' => 'editattribute', 'uses' => 'AttributeController@editattribute'])->middleware('is_admin');
+    
+    Route::get('addsize', ['as' => 'addsize', 'uses' => 'SizeController@addsize'])->middleware('is_admin');
+    Route::get('addsizenumber', ['as' => 'addsizenumber', 'uses' => 'SizeController@addsizenumber'])->middleware('is_admin');
+    Route::any('editsize/{size_id}', ['as' => 'editsize', 'uses' => 'SizeController@editsize'])->middleware('is_admin');
+    Route::any('editsizenumber/{size_id}', ['as' => 'editsizenumber', 'uses' => 'SizeController@editsizenumber'])->middleware('is_admin');
     
     Route::get('addemail', ['as' => 'addemail', 'uses' => 'EmailtemplateController@addemail'])->middleware('is_admin');
     Route::any('editemail/{email_id}', ['as' => 'editemail', 'uses' => 'EmailtemplateController@editemail'])->middleware('is_admin');
@@ -74,8 +82,14 @@ Route::group(['prefix'=>'admin',], function(){
     Route::post('/savepayment', 'UseradminController@savepayment')->middleware('is_admin');
     
     Route::post('/saveattribute', 'AttributeController@saveattribute')->middleware('is_admin');
+    Route::post('/savesize', 'SizeController@savesize')->middleware('is_admin');
+    Route::post('/savesizenumber', 'SizeController@savesizenumber')->middleware('is_admin');
     Route::post('/saveattributeedit/{atb_id}', 'AttributeController@saveattributeedit')->middleware('is_admin');
+    Route::post('/savesizeedit/{atb_id}', 'SizeController@savesizeedit')->middleware('is_admin');
+    Route::post('/savesizenumedit/{atb_id}', 'SizeController@savesizenumedit')->middleware('is_admin');
     Route::any('/deleteattribute/{atb_id}', 'AttributeController@deleteattribute')->middleware('is_admin');
+    Route::any('/deletesize/{atb_id}', 'SizeController@deletesize')->middleware('is_admin');
+    Route::any('/deletesizenumber/{atb_id}', 'SizeController@deletesizenumber')->middleware('is_admin');
     
     Route::post('/saveparentcat', 'CategoryadminController@saveparentcat')->middleware('is_admin');
     Route::post('/saveparentcatedit/{cat_id}', 'CategoryadminController@saveparentcatedit')->middleware('is_admin');

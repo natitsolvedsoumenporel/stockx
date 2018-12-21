@@ -10,13 +10,15 @@
                 <h3>sneakers get loud</h3>
                 <!-- <h6 class="text-uppercase mt-3 mb-4">Canada's leading property managment firm</h6> -->
                 <div class="home-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control venue-location" placeholder="Search for brand, color, etc.">
-                            <!-- <input type="text" class="form-control venue-name" placeholder="Venue name..."> -->
-                        <div class="input-group-prepend">
-                                <button class="btn btn-dark" type="button"> Browse</button>
-                        </div>						
-                    </div>						
+                     {!! Form::open(['url' => [url('') .'/product_list'],'method'=>'get', 'files' => true,'id'=>"searchForm"]) !!}
+                        <div class="input-group">
+                            <input type="text" class="form-control venue-location" placeholder="Search for brand, color, etc.">
+                                <!-- <input type="text" class="form-control venue-name" placeholder="Venue name..."> -->
+                            <div class="input-group-prepend">
+                                    <button class="btn btn-dark" id="browse" type="submit"> Browse</button>
+                            </div>						
+                        </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -658,4 +660,11 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function(){
+       $("#browse").click(function(){
+           window.locat
+       }); 
+    });
+</script>
 @endsection
