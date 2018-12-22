@@ -32,11 +32,21 @@
 							</div>
 						</li>
                                                 <li>
-							<a href="#subSizeType" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Manage Size Types</span> <i class="icon-submenu lnr lnr-chevron-right"></i></a>
-							<div id="subSizeType" class="collapse ">
+							<a href="#Color" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Manage Color</span> <i class="icon-submenu lnr lnr-chevron-right"></i></a>
+							<div id="Color" class="collapse ">
 								<ul class="nav">
-									<li><a href="{{ URL::to('admin/listsize') }}" class="">Manage Size Types</a></li>
-									<li><a href="{{ URL::to('admin/addsize') }}" class="">Add Size Types</a></li>
+									<li><a href="{{ URL::to('admin/listcolor') }}" class="">Color List</a></li>
+									<li><a href="{{ URL::to('admin/addcolor') }}" class="">Add Color</a></li>
+									<!--<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>-->
+								</ul>
+							</div>
+						</li>
+                                                <li>
+							<a href="#brand" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Manage Brands</span> <i class="icon-submenu lnr lnr-chevron-right"></i></a>
+							<div id="brand" class="collapse ">
+								<ul class="nav">
+									<li><a href="{{ URL::to('admin/listbrand') }}" class="">Brand List</a></li>
+									<li><a href="{{ URL::to('admin/addbrand') }}" class="">Add Brand</a></li>
 									<!--<li><a href="{{ URL::to('admin/password') }}" class="">Change Password</a></li>-->
 								</ul>
 							</div>

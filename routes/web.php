@@ -49,6 +49,8 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listsize', ['as' => 'lissize', 'uses' => 'SizeController@listsize'])->middleware('is_admin');
     Route::get('showsizelist/{shoesize}', ['as' => 'showsizelist', 'uses' => 'SizeController@showsizelist'])->middleware('is_admin');
     Route::get('listemail', ['as' => 'listemail', 'uses' => 'EmailtemplateController@listemail'])->middleware('is_admin');
+    Route::get('listcolor', ['as' => 'listemail', 'uses' => 'ColorController@listcolor'])->middleware('is_admin');
+    Route::get('listbrand', ['as' => 'listbrand', 'uses' => 'BrandController@listbrand'])->middleware('is_admin');
     
     
     
@@ -70,6 +72,18 @@ Route::group(['prefix'=>'admin',], function(){
     Route::post('/addemailsave', 'EmailtemplateController@addemailsave')->middleware('is_admin');
     Route::post('/editemailsave/{email_id}', 'EmailtemplateController@editemailsave')->middleware('is_admin');
     Route::any('/deleteemail/{email_id}', 'EmailtemplateController@deleteemail')->middleware('is_admin');
+    
+    Route::get('addbrand', ['as' => 'addbrand', 'uses' => 'BrandController@addbrand'])->middleware('is_admin');
+    Route::any('editbrand/{brand_id}', ['as' => 'editbrand', 'uses' => 'BrandController@editbrand'])->middleware('is_admin');
+    Route::post('/addbrandsave', 'BrandController@addbrandsave')->middleware('is_admin');
+    Route::post('/editbrandsave/{brand_id}', 'BrandController@editbrandsave')->middleware('is_admin');
+    Route::any('/deletebrand/{brand_id}', 'BrandController@deletebrand')->middleware('is_admin');
+    
+    Route::get('addcolor', ['as' => 'addcolor', 'uses' => 'ColorController@addcolor'])->middleware('is_admin');
+    Route::any('editcolor/{color_id}', ['as' => 'editcolor', 'uses' => 'ColorController@editcolor'])->middleware('is_admin');
+    Route::post('/addcolorsave', 'ColorController@addcolorsave')->middleware('is_admin');
+    Route::post('/editcolorsave/{color_id}', 'ColorController@editcolorsave')->middleware('is_admin');
+    Route::any('/deletecolor/{color_id}', 'ColorController@deletecolor')->middleware('is_admin');
     
     
     Route::any('viewuser/{ur_id}', ['as' => 'viewuser', 'uses' => 'UseradminController@viewuser'])->middleware('is_admin');
