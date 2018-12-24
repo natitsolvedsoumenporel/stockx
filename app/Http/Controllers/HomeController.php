@@ -61,12 +61,33 @@ class HomeController extends Controller
     }
     
     public function product_list(){
+        //print_r($_REQUEST); exit;
+        $search_text = $_REQUEST['brand'];
         $categories = allcategory::where('parent_id',0)->get()->toArray();
         $colors = Color::where('is_active',1)->get()->toArray();
         $brands = Brand::where('is_active',1)->get()->toArray();
-        //print_r($brands); exit;
+        //print_r($brand_fetch); exit;
+        //$is_match = Brand::where('is_active',1)->where('is_active', )->get()->toArray();
+        $fetchAllProduct = array();
+        $group_product = array();
+        if(!empty($search_text)){
+            $brand_fetch = Brand::where('is_active',1)->where('brand_name',strtolower($search_text))->get()->first()->toArray();
+            $fetchAllProduct = DB::table('products')->where('is_active',1)->where('brand_id',$brand_fetch['id'])->get();
+            if(count($fetchAllProduct) >0){
+               $fetchAllProduct = $fetchAllProduct->toArray(); 
+               $group_product = array_chunk($fetchAllProduct,3);
+            }
+        }else{
+            $fetchAllProduct = DB::table('products')->where('is_active',1)->get()->toArray();
+            $group_product = array_chunk($fetchAllProduct,3);
+        }
+        
+        
+        //print_r($group_product); exit;
         //print_r($categories);exit;
-        return view('Home/product_list',compact('brands','colors','categories'));
+        //$all_product 
+        
+        return view('Home/product_list',compact('brands','colors','categories','group_product'));
     }
     
     public function get_subcat(Request $request){
@@ -75,6 +96,8 @@ class HomeController extends Controller
         //$condition = array();
         $get_all_subcat = allcategory::where("parent_id",$parent_id)->get();
         //print_r($get_all_subcat); exit;
+    
+        
         if(!empty($get_all_subcat)){
             
             $html = "<option value=''>Select subcategory</option>";

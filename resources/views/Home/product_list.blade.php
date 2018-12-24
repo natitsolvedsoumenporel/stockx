@@ -179,7 +179,9 @@
                 </div>
                 </div>
                 <div id="search-result">
+                    <?php if(count($group_product)>0){ foreach($group_product as $key => $val){ ?>
                 <div class="row">
+                    <?php foreach($val as $pKey => $pValue){ ?>
                     <div class="column">
                         <div class="most-popu">						
                             <div class="most-popu-pic">
@@ -196,20 +198,21 @@
 
                             </div>
                             <div class="most-popu-text">
-                                <h4>Adidas Yeezy Boost 350 V2 Cream/Triple White</h4>
+                                <h4><?php echo $pValue->p_name; ?></h4>
                                 <div class="most-popu-text-btm">
                                     <span class="most-popu-text-btm-lt">
                                         <p>LOWEST ASK</p>
                                         <h1>$127</h1>
                                     </span>
                                     <span class="most-popu-text-btm-rt">
-                                        <h6>$600 Sold</h6>
+                                        <h6>$<?php echo $pValue->price; ?> Sold</h6>
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="column">
+                    <?php  } ?>
+<!--                    <div class="column">
                       <div class="most-popu">						
                           <div class="most-popu-pic">
                               <div class="overlay-div">
@@ -237,8 +240,8 @@
                           </div>
                       </div>
 
-                    </div>
-                    <div class="column">
+                    </div>-->
+<!--                    <div class="column">
                       <div class="most-popu">						
                           <div class="most-popu-pic">
                               <div class="overlay-div">
@@ -266,10 +269,12 @@
                           </div>
                       </div>
 
-                    </div>                 
+                    </div>                 -->
                </div>
-                
-                <div class="row">
+                    <?php } }else{ ?>
+                    <div class="row">No Data Found</div>
+                    <?php } ?>
+<!--                <div class="row">
                       <div class="column">
                         <div class="most-popu">						
                             <div class="most-popu-pic">
@@ -447,7 +452,7 @@
                         </div>
 
                       </div>                 
-               </div>
+               </div>-->
                 </div>
                 
                 

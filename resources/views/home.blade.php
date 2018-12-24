@@ -10,9 +10,10 @@
                 <h3>sneakers get loud</h3>
                 <!-- <h6 class="text-uppercase mt-3 mb-4">Canada's leading property managment firm</h6> -->
                 <div class="home-search">
-                     {!! Form::open(['url' => [url('') .'/product_list'],'method'=>'get', 'files' => true,'id'=>"searchForm"]) !!}
+                     {!! Form::open(['url' => [url('') .'/product_list'],'method'=>'post', 'files' => true,'id'=>"searchForm"]) !!}
+                     {{ csrf_field() }}
                         <div class="input-group">
-                            <input type="text" class="form-control venue-location" placeholder="Search for brand, color, etc.">
+                            <input type="text" name="brand" class="form-control venue-location" placeholder="Search for brand">
                                 <!-- <input type="text" class="form-control venue-name" placeholder="Venue name..."> -->
                             <div class="input-group-prepend">
                                     <button class="btn btn-dark" id="browse" type="submit"> Browse</button>
