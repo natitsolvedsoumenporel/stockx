@@ -31,6 +31,8 @@ Route::get('/editprofile', 'UserController@editprofile');
 Route::get('/profilepass', 'UserController@profilepass');
 Route::get('/product_list', 'HomeController@product_list');
 Route::any('/logout', 'HomeController@logout');
+Route::any('/get_subcat', 'HomeController@get_subcat');
+Route::any('/product_search', 'HomeController@product_search');
 
 Route::group(['prefix'=>'admin',], function(){
     Route::get('/', ['as' => 'index', 'uses' => 'UseradminController@submitLogin']);

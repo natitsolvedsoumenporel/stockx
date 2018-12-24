@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="description" content="">
   <meta name="author" content="">
+  
   <link rel="icon" href="../../favicon.ico">
 
   <title>S Solid</title>
@@ -28,6 +30,20 @@
   
     <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{ asset('js/formValidation.js')}}"></script>
+    
+    <link href="{{ asset('assets/frontend/css/asRange.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/jquery-asRange.js')}}"></script>
+    
+    <script type="text/javascript">
+        var base_url = "{!! URL::to('/')!!}";
+        //alert(base_url);
+    
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
 </head>
 
 <body>

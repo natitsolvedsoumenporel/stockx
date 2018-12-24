@@ -13,6 +13,10 @@ use Session;
 use Validator;
 use App\User;
 use App\emailTemplate;
+use App\allcategory;
+use App\Color;
+use App\Brand;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -57,7 +61,144 @@ class HomeController extends Controller
     }
     
     public function product_list(){
-        return view('Home/product_list');
+        $categories = allcategory::where('parent_id',0)->get()->toArray();
+        $colors = Color::where('is_active',1)->get()->toArray();
+        $brands = Brand::where('is_active',1)->get()->toArray();
+        //print_r($brands); exit;
+        //print_r($categories);exit;
+        return view('Home/product_list',compact('brands','colors','categories'));
+    }
+    
+    public function get_subcat(Request $request){
+        $data = array();
+        $parent_id = $request->input('parent_id');
+        //$condition = array();
+        $get_all_subcat = allcategory::where("parent_id",$parent_id)->get();
+        //print_r($get_all_subcat); exit;
+        if(!empty($get_all_subcat)){
+            
+            $html = "<option value=''>Select subcategory</option>";
+
+            foreach($get_all_subcat as $subcatKey => $subcatVal){
+
+                $html .= "<option value='".$subcatVal['cat_id']."'>".$subcatVal['category_name']."</option>";
+            }
+            $data['ack'] = 1;
+            $data['htm'] = $html;
+        }else{
+            $data['ack'] = 0;
+            $data['htm'] = "";
+        }
+       
+        echo json_encode($data); exit;
+        
+    }
+    
+    public function product_search(Request $request){
+        
+        
+        $all_data = $request->input();
+        $data = array();
+        //print_r($all_data);exit;
+        $min_price = $all_data['minprice'];
+        $max_price = $all_data['maxprice'];//
+        $product_name = $all_data['product_name'];
+        $brand_id = $all_data['brand_id'];//
+        $subcat_id = $all_data['subcat_id'];//
+        $cat_id = $all_data['cat_id'];//
+        $color_id = $all_data['color_id'];
+        
+        
+        $query = DB::table('products')->where('is_active',1);
+        //print_r($all_query); exit;
+        
+        
+        if(!empty($cat_id)){
+            $query = $query->where('cat_id','=', $cat_id);
+        }
+        
+        if(!empty($subcat_id)){
+            $query = $query->where('subcat_id','=', $subcat_id);
+        }
+        
+        if(!empty($color_id)){
+            $query = $query->where('color_id',$color_id);
+        }
+        
+        if(!empty($brand_id)){
+            $query = $query->where('brand_id',$brand_id);
+        }
+        
+        if(!empty($min_price) && !empty($max_price)){
+            
+            $query = $query->whereBetween('price',[$min_price,$max_price]);
+        }
+//        if(!empty($max_price)){
+//            $query = $query->where('price','<=', $max_price);
+//        }
+        
+        
+        
+        if(!empty($product_name)){
+            $query = $query->where('p_name', 'like', '%'.$product_name.'%');
+        }
+        //echo $query;exit;
+        $get_all_product = $query->get()->toArray();
+        $html = "";
+        if(count($get_all_product) > 0){
+            $grouped_product = array_chunk($get_all_product,3);
+            //print_r($grouped_product);
+            //exit;
+            
+        
+            foreach($grouped_product as $key => $val){
+                $html .= '<div class="row">';
+
+                foreach($val as $resultKey => $resultVal){
+                    $html .= '<div class="column">
+                                <div class="most-popu">						
+                                    <div class="most-popu-pic">
+                                        <div class="overlay-div">
+                                            <a href="#" class="d-inline-block">
+                                                <img class="img-fluid" src="assets/frontend/images/shop-cart.png" alt="" >
+                                            </a>
+
+                                            <a href="#" class="d-inline-block">
+                                                <img class="img-fluid" src="assets/frontend/images/hammer.png" alt="">									 
+                                            </a>
+                                        </div>
+                                        <img class="img-fluid" src="assets/frontend/images/featured-d.png" alt="">
+                                    </div>
+                                    <div class="most-popu-text">
+                                        <h4>'.$resultVal->p_name.'</h4>
+                                        <div class="most-popu-text-btm">
+                                            <span class="most-popu-text-btm-lt">
+                                                <p>LOWEST ASK</p>
+                                                <h1>$127</h1>
+                                            </span>
+                                            <span class="most-popu-text-btm-rt">
+                                                <h6>$'.$resultVal->price.' Sold</h6>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                }
+                $html .= '</div>';
+            }
+            
+            $data['ack'] = 1;
+            $data['htm'] = $html;
+            
+            
+        }else{
+            
+            $html .= '<div class="row">No data Found</div>';
+            $data['ack'] = 0;
+            $data['htm'] = $html;
+        }
+        $data['total'] = count($get_all_product);
+        echo json_encode($data); exit;
     }
     
     public function afterloginfrontend(Request $request){
