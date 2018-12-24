@@ -140,7 +140,7 @@ class HomeController extends Controller
         
         
         if(!empty($product_name)){
-            $query = $query->where('p_name', 'like', '%'.$product_name.'%');
+            $query = $query->where('p_name', 'like', '%'.$product_name.'%'); 
         }
         //echo $query;exit;
         $get_all_product = $query->get()->toArray();
