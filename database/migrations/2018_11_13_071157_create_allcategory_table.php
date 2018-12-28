@@ -14,7 +14,7 @@ class CreateAllcategoryTable extends Migration
     public function up()
     {
         Schema::table('allcategory', function (Blueprint $table) {
-            $table->increments('cat_id');
+            //$table->increments('cat_id');
             $table->string('category_name');
             $table->string('category_type');
             $table->longText('description')->nullable($value = true);

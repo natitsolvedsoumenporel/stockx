@@ -24,6 +24,11 @@ class CreateUsersTable extends Migration
             $table->text('image')->nullable($value = true);
             $table->char('phone',255)->nullable($value = true);
             $table->integer('user_type');
+            $table->text('payment_key')->nullable($value = true);
+            $table->text('payment_id')->nullable($value = true);
+            $table->integer('approve')->nullable($value = true);
+            $table->string('currency')->nullable($value = true);
+            $table->string('shoesize')->nullable($value = true);
             $table->rememberToken();
             $table->timestamps();
         });

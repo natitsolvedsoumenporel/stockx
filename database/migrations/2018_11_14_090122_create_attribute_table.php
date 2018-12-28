@@ -14,7 +14,7 @@ class CreateAttributeTable extends Migration
     public function up()
     {
         Schema::table('attribute', function (Blueprint $table) {
-            $table->increments('attrib_id');
+            //$table->increments('attrib_id');
             $table->integer('category_id');
             $table->string('attribute_name');
             $table->longText('description')->nullable($value = true);

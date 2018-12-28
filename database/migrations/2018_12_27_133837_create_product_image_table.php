@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddParentIdColumnsToAllcategoryTable extends Migration
+class CreateProductImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddParentIdColumnsToAllcategoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('allcategory', function (Blueprint $table) {
-            $table->integer('parent_id');
+        Schema::table('product_image', function (Blueprint $table) {
+            // $table->increments('id');
+            $table->integer('p_id');
+            $table->text('originalpath');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,8 @@ class AddParentIdColumnsToAllcategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('allcategory', function (Blueprint $table) {
-            $table->dropColumn('parent_id');
+        Schema::table('product_image', function (Blueprint $table) {
+            //
         });
     }
 }

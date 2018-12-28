@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPaymentIdColumnsToUsersTable extends Migration
+class AddSizeTypeToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPaymentIdColumnsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-             $table->text('payment_id')->nullable($value = true);
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('size_type');
         });
     }
 
@@ -25,8 +25,9 @@ class AddPaymentIdColumnsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('payment_id');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('size_type');
         });
     }
 }
+

@@ -22,6 +22,8 @@ class CreateProductTable extends Migration
             $table->integer('brand_id');
             $table->integer('color_id');
             $table->integer('is_active');
+            $table->integer('price');
+            $table->char('pro_uni_id',255);
             $table->rememberToken();
             $table->timestamps();
         });
