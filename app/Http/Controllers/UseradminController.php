@@ -33,9 +33,9 @@ class UseradminController extends Controller
     {   
         $userdata = $request->all();
         $condition = ['email'=>$request->input('email') , 'password'=> ($request->input('password'))]; 
-        
+        //print_r($condition); exit;
         $user = DB::table('users')->where($condition)->first();
-        
+        //print_r($user); exit;
         if(Auth::attempt($condition)){
             Session::flash('message', 'Successfully Logged In.');
             return redirect('admin/dashboard');
