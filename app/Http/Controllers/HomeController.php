@@ -193,11 +193,11 @@ class HomeController extends Controller
                                         <img class="img-fluid" src="assets/frontend/images/featured-d.png" alt="">
                                     </div>
                                     <div class="most-popu-text">
-                                        <h4>'.$resultVal->p_name.'</h4>
+                                        <h4><a href="details/'.$resultVal->pro_uni_id.'">'.$resultVal->p_name.'</a></h4>
                                         <div class="most-popu-text-btm">
                                             <span class="most-popu-text-btm-lt">
                                                 <p>LOWEST ASK</p>
-                                                <h1>$127</h1>
+                                                <h1>$'.$resultVal->lowestask.'</h1>
                                             </span>
                                             <span class="most-popu-text-btm-rt">
                                                 <h6>$'.$resultVal->price.' Sold</h6>
@@ -239,6 +239,11 @@ class HomeController extends Controller
         }
         
         
+    }
+    
+    public function how_it_works(){
+       // echo 1;exit;
+       return view('Home.how_it_works'); 
     }
     
     public function aftersignupfrontend(Request $request){

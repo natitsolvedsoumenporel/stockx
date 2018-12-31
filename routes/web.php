@@ -33,7 +33,11 @@ Route::any('/product_list', 'HomeController@product_list');
 Route::any('/logout', 'HomeController@logout');
 Route::any('/product_search', 'HomeController@product_search');
 Route::any('/get_subcat', 'HomeController@get_subcat');
+Route::any('/how_it_works_page', 'HomeController@how_it_works');
 Route::any('/get_subsizelist', 'ProductController@get_subsizelist');
+Route::any('/details/{id}', 'ProductController@details');
+Route::any('/allsize/{id}', 'ProductController@allsize');
+
 
 Route::group(['prefix'=>'admin',], function(){
     Route::get('/', ['as' => 'index', 'uses' => 'UseradminController@submitLogin']);

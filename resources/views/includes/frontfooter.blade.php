@@ -7,7 +7,7 @@
 						<h5>Site Links</h5>
 						<ul class="d-flex list-unstyled">
 							<li>
-								<a class="footer-links" href="">How It Works</a>
+								<a class="footer-links" href="/how_it_works_page">How It Works</a>
 								<a class="footer-links" href="">Reviews</a>
 								<a class="footer-links" href="">Privacy</a>
 								<a class="footer-links" href="">Terms</a>

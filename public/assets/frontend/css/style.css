@@ -3,6 +3,9 @@
 body{font-family: 'Montserrat', sans-serif; font-size:14px; color:#111;}
 a{color:#ffe200}
 a:hover{color:#ffe200; transition: ease all 0.2s}
+h2,h3,h4,h5,h6{
+    color: #333032;
+}
 .text-primary{color:#ffe200 !important}
 .btn{cursor: pointer; font-size:14px;}
 .btn:hover{transition: ease all 0.2s}
@@ -95,7 +98,7 @@ a:hover{color:#ffe200; transition: ease all 0.2s}
 .most-popu-area .container .row div h3{ font-family: 'Oswald', sans-serif; color: #333032; font-weight: 600; font-size: 1.4rem; margin: 0 0 2rem;}
 .most-popu-area .container .row div h3 i{color: #333032; font-size: 1.3rem;}
 .most-popu-area .container .row div h6{font-family: 'Oswald', sans-serif; color: #333032; font-weight: 600; text-transform: uppercase;}
-.most-popu-pic{width: auto;  height: 222px; border-bottom: 1px solid #959595; padding: 0; display: flex; align-items: center; justify-content: center;  overflow: hidden; position: relative;  }
+.most-popu-pic{width: auto;  height: 222px; border-bottom: 1px solid #959595; padding: 0; display: flex; align-items: center; justify-content: center;  overflow: hidden; position: relative; cursor: pointer; }
 /* .most-popu{border-top: 3px solid #f4afff; width: auto; background: #f4f4f4; height: 334px; position: relative; transition: all 0.4s ease-out; -webkit-transition: all 0.4s ease-out; -moz-transition: all 0.4s ease-out; overflow: hidden;} */
 
 .most-popu .most-popu-pic .overlay-div{ display: none;}
@@ -137,10 +140,10 @@ a:hover{color:#ffe200; transition: ease all 0.2s}
 .sign-up-form div .btn-dark{ border-radius: 3rem; font-size: 1.03rem; padding: 0.8rem 5rem; background: #000000; font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 700;}
 .sign-up-form div .btn-dark:hover{ background: #ffffff; color: #000000; border: 1px solid #000000; }
 .sign-up-social{ margin: 0;     text-align: center;}
-.sign-up-social .btn-primary{font-family: 'Oswald', sans-serif; border-radius: 3rem; border:1px solid #34518e; padding: 0.65rem 2rem;  font-size: 0.95rem; background: #3b5998;}
+.sign-up-social .btn-primary{font-family: 'Oswald', sans-serif; color: #fff; border-radius: 3rem; border:1px solid #34518e; padding: 0.65rem 2rem;  font-size: 0.95rem; background: #3b5998;}
 .sign-up-social .btn-primary i{ margin-right: 0.5rem;}
 .sign-up-social .btn-primary:hover{ border: 1px solid #34518e; background: #ffffff; color: #34518e;}
-.sign-up-social .btn-info{ background: #2ba9e1; border:1px solid #2399ce; font-family: 'Oswald', sans-serif; border-radius: 3rem; padding: 0.65rem 2rem;  font-size: 0.95rem;}
+.sign-up-social .btn-info{ background: #2ba9e1; color: #fff; border:1px solid #2399ce; font-family: 'Oswald', sans-serif; border-radius: 3rem; padding: 0.65rem 2rem;  font-size: 0.95rem;}
 .sign-up-social .btn-info i{ margin-right: 0.5rem; }
 .sign-up-social .btn-info:hover{border:1px solid #2399ce; color: #2ba9e1; background: #ffffff;}
 .sign-up-form h6{ font-weight: 600; font-size: 0.9rem; margin-top: 1.8rem; margin-bottom: 1rem; color: #555555;}
@@ -486,17 +489,1280 @@ border-color: transparent transparent #ececec transparent;
 }
 
 
+/* Range Slider */
+.range_slider {position:relative; width:100%; padding:10%;}
+
+/* Input */
+.range_slider .ix-min-input {position:absolute; top:0; left:0; margin:20px;}
+.range_slider .ix-max-input {position:absolute; top:0; right:0; margin:20px;}
+
+/* Progress Bar (TouchEvent Area) */
+.range_slider .ix-slider-bar {position:absolute; top:0; left:0; right:0; height:10px; border-radius:5px;}
+.range_slider .ix-progress {position:absolute; width:100%; height:100%; border-radius:5px;}
+
+/* Icon */
+.range_slider .ix-min-icon,
+.range_slider .ix-max-icon {position:absolute; margin-top:-5px; margin-left:-10px; width:20px; height:20px; cursor:pointer; border-radius:10px; box-sizing:border-box; background:#4f4f4f; box-shadow:1px 1px 2px 2px rgba(0,0,0,0.2);}
+.range_slider .ix-min-icon:focus,
+.range_slider .ix-max-icon:focus {background:orange;}
+
+.red {background:#8f8e8e;}
+.gray {background:#DBDBDF;}
+/****************Details****************/
+.thumbnails{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+.easyzoom a img{
+    object-fit: cover;
+}
+.thumbnails li{
+    list-style: none;
+    width: 86px;
+    height: 86px;
+    margin: 45px 0;
+}
+.thumbnails li img:hover,
+{
+    border: 3px solid #000;
+}
+.thumbnails li.active{
+    border: 3px solid #000;
+}
+.thumbnails li img{
+    width: 86px;
+    height: 86px;
+    object-fit: cover;
+    border: 1px solid #898989;
+}
+.details-text{
+    margin-left: 20px;
+}
+.details-text h2{
+    font-family:  'Oswald', sans-serif;
+    font-size: 32px;
+    color:#3a3839;
+}
+.details-text h6{
+    color: #777777;
+    font-weight: 600;
+}
+.details-text p{
+    color: #777777;
+    line-height: 28px;
+}
+.details-text label{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-right: 10px;
+    color: #777777;
+}
+.details-text .form-control {
+    border-radius: 3rem;
+    font-size: 12px;
+    border-color: #a1a1a1;
+    color: #777777;
+    font-size: 16px;
+    font-weight: 600;
+    height: 42px !important;
+    width: 30%;
+}
+.details-text h6 span{
+    font-size: 40px;
+    font-family:  'Oswald', sans-serif;
+    color: #333032;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+.details-text h6 i{
+    color: #0db800;
+    font-size: 21px;
+    margin-right: 6px;
+}
+.size p{
+    font-weight: 600;
+    margin: 0;
+}
+.size a{
+    font-weight: 600;
+    font-size: 14px;
+    color: #777777;
+}
+.size a:hover{
+    text-decoration: none;
+    color: #ffe200;
+}
+.line{
+    width: 2px;
+    background: #777777;
+    height: 14px;
+    margin: 0 12px;
+}
+.size-bt{
+    background: #333032;
+    border: 1px solid #333032;
+    border-radius: 50px;
+    padding: 11px 38px;
+    color: #fff;
+    font-size: 16px;
+    font-family:  'Oswald', sans-serif;
+    cursor: pointer;
+}
+.size.sm{
+    justify-content: space-evenly;
+}
+.size.sm p,
+.size.sm a{
+    font-size: 12px !important;
+}
+.size.sm .line{
+    height: 10px;
+    margin: 0 5px;
+}
+.size-bt.active,
+.size-bt:hover{
+    background: #fff !important;
+    color: #333032 !important;
+}
+.size-bt.active:hover{
+    background: #333032 !important;
+    color: #fff !important;
+}
+.size-bt i{
+    padding-left: 12px;
+}
+.grey-bt a{
+    background: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    border-radius: 50px;
+    padding:9px 30px;
+    color: #333032;
+    font-size: 12px;
+    font-family:  'Oswald', sans-serif;
+    font-weight: 600;
+}
+.grey-bt a:hover{
+    background: #fff;
+    text-decoration: none;
+}
+.grey-bt a i{
+    margin-right: 5px;
+}
+.related-product h3{
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+    font-weight: 600;
+    font-size: 28px;
+    margin: 0 0 2rem;
+}
+.related-product h6{
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+    font-weight: 600;
+    font-size: 20px;
+}
+.most-popu-text h5{
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    color: #555555;
+}
+.detail h1{
+    font-size:40px !important;
+}
+/********************Buy Works*********************/
+.works h2{
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+}
+.works h6{
+    color: #777777;
+    font-weight: 600;
+}
+.works .card img{
+    width: 60px;
+    height: 60px;
+    margin: auto;
+}
+.works .card{
+    border: none;
+    margin: 0 20px;
+}
+.works .card .card-title{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: #333032;
+    margin: 18px 0;
+}
+.works p{
+    font-size:16px;
+    color: #777777;
+}
+/*******************bid-buy********************/
+.bid h2{
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+}
+.bid h4{
+    color:#777777;
+}
+.bid .form-control{
+    border-radius: 3rem;
+    font-size: 12px;
+    border-color: #a1a1a1;
+    font-size: 16px;
+    color: #777777;
+    height: 45px !important;
+    /* padding: 21px 20px; */
+}
+.bid .form-group{
+    position: relative;
+}
+.bid .form-group i{
+    position: absolute;
+    top: 11px;
+    right: 20px;
+    color: #777777;
+    font-size: 18px;
+}
+.bid .form-group label{
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+.tab .btn-primary{
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 0;
+    border-bottom: 3px solid #fff !important;
+    padding: 6px 5px;
+}
+/* .tab .btn-primary.active, */
+.tab .btn-primary:hover,
+.tab .btn-primary:focus{
+    background-color: #fff !important;
+    color: #333032 !important;
+    box-shadow: none;
+    border-bottom: 3px solid #202020 !important;
+}
+.tab p{
+    color: #555555;
+}
+.top{
+    border-top: 1px solid #7d7d7d;
+    font-weight: 600;
+}
+.bid .card-body{
+    border: none;
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btn {
+    border: 1px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+.bid h3{
+    font-family: 'Oswald', sans-serif;
+    color: #333032;
+}
+.bid h6,h5,p{
+    color: #777777;
+}
+.bid p{
+    line-height: 24px;
+}
+
+/* The container */
+.container-box {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container-box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 72px;
+    width: 72px;
+    color: #3d3c3d;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    background-color: #eee;
+    border-radius: 8px;
+    border: 1px solid #898989;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container-box:hover input ~ .checkmark {
+    background-color: #f2f2f2;
+    color: #3d3c3d;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container-box input:checked ~ .checkmark {
+    background-color: #333032;
+    color: #fff;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container-box input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container-box .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background: #333032;
+  }
+
+/*******************News**********************/
+.news-banner {
+    background: url(../images/news-banner.jpg) no-repeat top center;
+    background-size: cover;
+    padding: 75px 0 60px;
+    color: #fff;
+    margin-top: 76px;
+}
+.news-banner h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #333032;
+}
+.news-left h3{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+.news-left h5{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    color: #555555;
+    padding-bottom: 10px;
+}
+.news-left h6{
+    font-size: 12px;
+    color: #333032;
+}
+.news-left .border-bottom{
+    border-bottom: 1px dashed #959595 !important;
+}
+.month{
+    font-family: 'Oswald', sans-serif;
+    background: #ffe200;
+    font-size: 14px;
+    display: inline-block;
+    font-weight: 500;
+    width: 91px;
+    height: 43px;
+    padding: 10px;
+}
+.date{
+    font-family: 'Oswald', sans-serif;
+    background: #ebebeb;
+    font-size: 40px;
+    display: inline-block;
+    font-weight: 500;
+    padding: 10px;
+    width: 91px;
+    height: 84px;
+    padding: 10px;
+}
+.news-right h3{
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+.news-right h6{
+    font-size: 14px;
+    font-weight: 500;
+}
+.news-right h6 a{
+    color: #333032;
+    font-size: 14px;
+    font-weight: 600;
+}
+.news-right h5 i{
+    background: #ebebeb;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #333333;
+}
+.news-right h5 i:hover{
+    background: #ffe200;
+}
+.news-right h5{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+/*******************Portfolio********************/
+.portfolio-banner {
+    background: url(../images/portfolio-banner.jpg) no-repeat top center;
+    background-size: cover;
+    padding: 75px 0 60px;
+    color: #fff;
+    margin-top: 76px;
+}
+.portfolio-banner h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: #333032;
+}
+.port .most-popu-text-btm-lt h1 .ask{
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+.port .most-popu-text-btm-lt h1{
+    font-size: 16px;
+}
+.port h3{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: #555555;
+}
+.port h4{
+    font-size: 14px;
+}
+.port h4 span{
+    font-size: 24px;
+}
+.port .green-txt{
+    font-size: 16px;
+}
+.port-modal .modal-content{
+    border-radius: 15px;
+}
+.port-modal .modal-header{
+    background: #333032;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.port-modal .modal-header h5{
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+.port-modal .close{
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0px 6px;
+    margin: 0;
+    color: #fff;
+    opacity: 1;
+}
+.port-modal .close:hover{
+    color: #ffe200 !important;
+    border: 2px solid #ffe200;
+    opacity: 1;
+}
+.port-img{
+    width: 190px;
+    height: 200px;
+    border: 2px solid #959595;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.port .modal-lg {
+    max-width: 800px;
+}
+.port-radio-bt h4{
+    font-size: 20px !important;
+    font-weight: 700;
+}
+.port-radio-bt .form-check-inline .form-check-label{
+    font-size: 20px;
+    font-weight: 500;
+    color: #333032;
+    padding-left: 5px;
+}
+.port-radio-bt .form-check-inline .form-check-input{
+    width: 17px;
+    height: 17px;
+}
+input[type="radio" i], input[type="checkbox" i]{
+    background-color: #fff !important;
+}
+/* The container */
+.container-port {
+    display: block;
+    position: relative;
+    padding-left:30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container-port input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark-port {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #333032;
+    margin-top: 4px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container-port:hover input ~ .checkmark-port {
+    background-color: #fff;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container-port input:checked ~ .checkmark-port {
+    background-color: #fff;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark-port:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container-port input:checked ~ .checkmark-port:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container-port .checkmark-port:after {
+       top: 4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #333032;
+  }
+.port-radio-bt .form-control{
+    border-radius: 3rem;
+    border-color: #a1a1a1;
+    color: #333032;
+    font-size: 14px;
+    font-weight: 500;
+    height: 42px !important;
+}
+/*********calender*********/
+.ui-widget.ui-widget-content {
+    border: 1px solid #c5c5c5;
+    background: #fff;
+}
+.ui-widget-header {
+    border: 1px solid #dddddd;
+    background: #e9e9e9;
+    color: #333333;
+    font-weight: bold;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    border: 1px solid #cccccc;
+    background: #ededed;
+    font-weight: normal;
+    color: #2b2b2b;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;
+}
+.ui-widget-header .ui-icon {
+    background:url(../images/ui-icons.png) ;
+}
+.ui-widget-header .ui-icon::after {
+    content: "f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+.ui-widget-header .ui-icon::before {
+    content: "    f104";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+.ui-datepicker td span, .ui-datepicker td a {
+    display: block;
+    padding: .2em;
+    text-align: right;
+    text-decoration: none;
+}
+.ui-datepicker {
+    position: absolute;
+top: 37px;
+left: 50.6875px;
+z-index: 1;
+display: block;
+	width: 17em;
+	padding: .2em .2em 0;
+	display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+	top: 1px;
+}
+.ui-datepicker .ui-datepicker-prev {
+	left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+	right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	right: 1px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -8px;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 1em;
+	margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+	width: 45%;
+}
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    top: 50%;
+    margin-top: -8px;
+}
+.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: block;
+	padding: .2em;
+	text-align: right;
+	text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+	background-image: none;
+	margin: .7em 0 0 0;
+	padding: 0 .2em;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+	float: right;
+	margin: .5em .2em .4em;
+	cursor: pointer;
+	padding: .2em .6em .3em .6em;
+	width: auto;
+	overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float: left;
+}
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi {
+	width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+	float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+	width: 95%;
+	margin: 0 auto .4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+	width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+	width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+	width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+	border-left-width: 0;
+}
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+	clear: left;
+}.ui-datepicker {
+	width: 17em;
+	padding: .2em .2em 0;
+	display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+	top: 2px;
+}
+.ui-datepicker .ui-datepicker-prev {
+	left: 1px;
+}
+.ui-datepicker .ui-datepicker-next {
+	right: 8px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	right: 8px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -8px;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 1em;
+	margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+	width: 45%;
+}
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: block;
+	padding: .2em;
+	text-align: right;
+	text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+	background-image: none;
+	margin: .7em 0 0 0;
+	padding: 0 .2em;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+	float: right;
+	margin: .5em .2em .4em;
+	cursor: pointer;
+	padding: .2em .6em .3em .6em;
+	width: auto;
+	overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float: left;
+}
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi {
+	width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+	float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+	width: 95%;
+	margin: 0 auto .4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+	width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+	width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+	width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-m
+.ui-datepicker-row-break {
+	clear: both;
+	width: 100%;
+	font-size: 0;
+}
+
+/* RTL support */
+.ui-datepicker-rtl {
+	direction: rtl;
+}
+.ui-datepicker-rtl .ui-datepicker-prev {
+	right: 2px;
+	left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next {
+	left: 2px;
+	right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+	right: 1px;
+	left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+	left: 1px;
+	right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+	clear: right;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+	float: left;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.ui-datepicker-rtl .ui-datepicker-group {
+	float: right;
+}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+	border-right-width: 0;
+	border-left-width: 1px;
+}
+
+/* Icons */
+.ui-datepicker .ui-icon {
+	display: block;
+	text-indent: -99999px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	left: .5em;
+	top: .3em;
+}
+
+/**/
+.irs {
+    position: relative; display: block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+    .irs-line {
+        position: relative; display: block;
+        overflow: hidden;
+        outline: none !important;
+    }
+        .irs-line-left, .irs-line-mid, .irs-line-right {
+            position: absolute; display: block;
+            top: 0;
+        }
+        .irs-line-left {
+            left: 0; width: 11%;
+        }
+        .irs-line-mid {
+            left: 9%; width: 82%;
+        }
+        .irs-line-right {
+            right: 0; width: 11%;
+        }
+
+    .irs-bar {
+        position: absolute; display: block;
+        left: 0; width: 0;
+    }
+        .irs-bar-edge {
+            position: absolute; display: block;
+            top: 0; left: 0;
+        }
+
+    .irs-shadow {
+        position: absolute; display: none;
+        left: 0; width: 0;
+    }
+
+    .irs-slider {
+        position: absolute; display: block;
+        cursor: default;
+        z-index: 1;
+    }
+        .irs-slider.single {
+
+        }
+        .irs-slider.from {
+
+        }
+        .irs-slider.to {
+
+        }
+        .irs-slider.type_last {
+            z-index: 2;
+        }
+
+    .irs-min {
+        position: absolute; display: block;
+        left: 0;
+        cursor: default;
+    }
+    .irs-max {
+        position: absolute; display: block;
+        right: 0;
+        cursor: default;
+    }
+
+    .irs-from, .irs-to, .irs-single {
+        position: absolute; display: block;
+        top: 0; left: 0;
+        cursor: default;
+        white-space: nowrap;
+    }
+
+.irs-grid {
+    position: absolute; display: none;
+    bottom: 0; left: 0;
+    width: 100%; height: 20px;
+}
+.irs-with-grid .irs-grid {
+    display: block;
+}
+    .irs-grid-pol {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1px; height: 8px;
+        background: #000;
+    }
+    .irs-grid-pol.small {
+        height: 4px;
+    }
+    .irs-grid-text {
+        position: absolute;
+        bottom: 0; left: 0;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 9px; line-height: 9px;
+        padding: 0 3px;
+        color: #000;
+    }
+
+.irs-disable-mask {
+    position: absolute; display: block;
+    top: 0; left: -1%;
+    width: 102%; height: 100%;
+    cursor: default;
+    background: rgba(0,0,0,0.0);
+    z-index: 2;
+}
+.lt-ie9 .irs-disable-mask {
+    background: #000;
+    filter: alpha(opacity=0);
+    cursor: not-allowed;
+}
+
+.irs-disabled {
+    opacity: 0.4;
+}
+
+
+.irs-hidden-input {
+    position: absolute !important;
+    display: block !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    z-index: -9999 !important;
+    background: none !important;
+    border-style: solid !important;
+    border-color: transparent !important;
+}
+
+
+/* Ion.RangeSlider, Simple Skin
+// css version 2.0.3
+// Â© Denis Ineshin, 2014    https://github.com/IonDen
+// Â© guybowden, 2014        https://github.com/guybowden
+// ===================================================================================================================*/
+
+/* =====================================================================================================================
+// Skin details */
+
+.irs {
+    height: 55px;
+}
+.irs-with-grid {
+    height: 75px;
+}
+.irs-line {
+    height: 10px; top: 33px;
+    background: #EEE;
+    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%); /* W3C */
+    border: 1px solid #CCC;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+}
+    .irs-line-left {
+        height: 8px;
+    }
+    .irs-line-mid {
+        height: 8px;
+    }
+    .irs-line-right {
+        height: 8px;
+    }
+
+.irs-bar {
+    height: 10px; top: 33px;
+    border-top: 1px solid #4d4d4e;
+    border-bottom: 1px solid #4d4d4e;
+    background: #428bca;
+    background:#626262; /* W3C */
+}
+    .irs-bar-edge {
+        height: 10px; top: 33px;
+        width: 14px;
+        border: 1px solid #428bca;
+        border-right: 0;
+        background: #428bca;
+        background: linear-gradient(to top, rgba(66,139,202,1) 0%,rgba(127,195,232,1) 100%); /* W3C */
+        border-radius: 16px 0 0 16px;
+        -moz-border-radius: 16px 0 0 16px;
+    }
+
+.irs-shadow {
+    height: 2px; top: 38px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.lt-ie9 .irs-shadow {
+    filter: alpha(opacity=30);
+}
+
+.irs-slider {
+    top: 25px;
+    width: 27px; height: 27px;
+    border: 1px solid #AAA;
+    background: #DDD;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(220,220,220,1) 20%,rgba(255,255,255,1) 100%); /* W3C */
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.irs-slider.state_hover, .irs-slider:hover {
+    background: #FFF;
+}
+
+.irs-min, .irs-max {
+    color: #333;
+    font-size: 12px; line-height: 1.333;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 5px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.lt-ie9 .irs-min, .lt-ie9 .irs-max {
+    background: #ccc;
+}
+
+.irs-from, .irs-to, .irs-single {
+    color: #fff;
+    font-size: 14px; line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: #aaaaaa;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.lt-ie9 .irs-from, .lt-ie9 .irs-to, .lt-ie9 .irs-single {
+    background: #999;
+}
+
+.irs-grid {
+    height: 27px;
+}
+.irs-grid-pol {
+    opacity: 0.5;
+    background: #428bca;
+}
+.irs-grid-pol.small {
+    background: #999;
+}
+
+.irs-grid-text {
+    bottom: 5px;
+    color: #99a4ac;
+}
+
+.irs-disabled {
+}
+/*************/
+.port-radio-bt h5{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333032;
+}
+.port-modal .modal-footer{
+    border: none;
+    padding: 15px 0;
+}
+.port-modal .modal-body{
+    padding: 18px 25px;
+}
+.port .most-popu-pic:hover{
+    background: #dcdbdb;
+}
 
 
 
 
 
-
-
-
-
-
- 
 
 /************* Responsive Style ***********/
 
@@ -508,7 +1774,67 @@ border-color: transparent transparent #ececec transparent;
 	.bg-light{background:rgba(255,255,255,1)!important}
 }
 @media (max-width: 575.98px) {
-	.best-venue ul li {width: 100%;}
+    .best-venue ul li {width: 100%;}
+    .edit-pro-form div .btn{
+        padding: 8px 17px;
+        font-size: 16px;
+    }
+    .size-bt {
+        padding: 7px 22px !important;
+    }
+    .news-right h3{
+        font-size: 22px;
+    }
+    .portfolio-banner h3{
+        font-size: 30px;
+        color: #ffffff;
+    }
+    .port-img{
+        margin-bottom: 10px;
+    }
+    .form-check-inline+.form-check-inline{
+        margin-left: 0;
+    }
+    .grey-bt{
+        justify-content: center;
+    }
+    .grey-bt a {
+        padding: 9px 25px;
+        margin-right: 5px;
+    }
+    .breadcrumb{
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .left-top{
+        margin-top: 30px;
+    }
+    .column{
+        width: 100%;
+    }
+    .checkmark{
+        width: 50px;
+        height: 60px;
+        padding: 5px;
+    }
+    .container-box{
+        padding-left:0;
+    }
+    .bid .col-lg-7 img{
+        margin-bottom: 10px;
+    }
+    .bid h2{
+        margin-top: 0 !important;
+    }
+    .sign-up-form{
+        text-align: center;
+    }
+    .sign-up-social .btn-info{
+        margin-top: 10px;
+    }
+    .sign-up-tab .nav-tabs{
+        margin-bottom: 10px;
+    }
 }
 @media (max-width: 767px){
 	.bg-light{background:rgba(255,255,255,1)!important}
@@ -521,6 +1847,22 @@ border-color: transparent transparent #ececec transparent;
 	ul.searchlist li{margin-left: 0; margin-right: 0; width: 100%}
 	.after-login-user{margin-bottom: 8px}
 	.event-type-list li{width:50%}
+    .sign-up-lt{
+        padding: 10px;
+    }
+    .sign-up-form{
+        margin: 0;
+    }
+    .sign-up-form div .btn-dark{
+        padding: 10px 25px;
+    }
+    .sign-up-tab{
+        margin-top: 20px;
+    }
+    .sign-up-form h3{
+        margin-top: 3rem;
+    }
+
 }
 @media (max-width: 360px){
 	.event-type-list li{width:100%}

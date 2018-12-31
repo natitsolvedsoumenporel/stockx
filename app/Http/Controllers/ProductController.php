@@ -245,4 +245,56 @@ class ProductController extends Controller
        
         echo json_encode($data); exit;
     }
+    
+    public function details($p_id = null ){
+        $sizelists = array();
+      $product_unique_id = $p_id;
+      $fetch_details = Product::with('imagepath','parentcategory','childcategory','brandname','sizetypename')
+        ->where("pro_uni_id",$product_unique_id)
+        ->first()->toArray();
+      //print_r($fetch_details); exit;
+      
+      //print_r($all_size); exit;
+      if(!empty($fetch_details['size'])){
+            $all_size = explode(',',$fetch_details['size']);
+            foreach($all_size as $akey => $aval){
+                
+                  $sizelists[$akey] = numbersize::where('size_number', $aval)
+                  ->first()->toArray();
+            }
+    
+    
+        }
+        if(!empty($fetch_details['cat_id'])){
+            $condition = array(['cat_id','=',$fetch_details['cat_id']],['product_id','!=',$fetch_details['product_id']]);
+            $get_related_product = Product::with('imagepath','parentcategory','childcategory','brandname','sizetypename')->where($condition)->get()->toArray();
+        }
+        //print_r($get_related_product); exit;
+        
+        
+      //print_r($sizelists);exit;
+      return view('Product.details',compact('fetch_details','sizelists','get_related_product'));
+    }
+    
+    public function allsize($p_id = null){
+        //echo $p_id;exit;
+        
+        $fetch_details = Product::with('imagepath','parentcategory','childcategory','brandname','sizetypename')
+        ->where("pro_uni_id",$product_unique_id)
+        ->first()->toArray();
+      //print_r($fetch_details); exit;
+      
+      //print_r($all_size); exit;
+      if(!empty($fetch_details['size'])){
+            $all_size = explode(',',$fetch_details['size']);
+            foreach($all_size as $akey => $aval){
+                
+                  $sizelists[$akey] = numbersize::where('size_number', $aval)
+                  ->first()->toArray();
+            }
+    
+    
+        }
+    }
+    
 }

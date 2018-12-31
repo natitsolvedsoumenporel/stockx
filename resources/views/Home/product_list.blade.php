@@ -198,11 +198,11 @@
 
                             </div>
                             <div class="most-popu-text">
-                                <h4><?php echo $pValue->p_name; ?></h4>
+                                <h4><a  style="color:black" href="details/<?php echo $pValue['pro_uni_id']; ?>"><?php echo $pValue->p_name; ?></a></h4>
                                 <div class="most-popu-text-btm">
                                     <span class="most-popu-text-btm-lt">
                                         <p>LOWEST ASK</p>
-                                        <h1>$127</h1>
+                                        <h1>$<?php echo $pValue->lowestask; ?></h1>
                                     </span>
                                     <span class="most-popu-text-btm-rt">
                                         <h6>$<?php echo $pValue->price; ?> Sold</h6>
