@@ -14,16 +14,8 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            //$table->increments('id');
-            $table->string('p_name');
-            $table->text('p_description')->nullable($value = true);
-            $table->integer('cat_id');
-            $table->integer('subcat_id')->nullable($value = true);
-            $table->integer('brand_id');
-            $table->integer('color_id');
-            $table->integer('is_active');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->integer('price');
+            
         });
     }
 
