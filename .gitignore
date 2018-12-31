@@ -2,6 +2,7 @@
 /public/hot
 /.idea
 /vendor
+/.env
 /.vagrant
 npm-debug.log
 yarn-error.log
