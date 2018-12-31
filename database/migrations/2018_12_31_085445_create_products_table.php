@@ -22,10 +22,12 @@ class CreateProductsTable extends Migration
             //$table->integer('color_id');
             $table->char('color_id',55)->nullable($value = true);
             $table->integer('is_active');
+
             $table->integer('price');
             $table->char('pro_uni_id',255);
             $table->integer('size_type');
             $table->char('size',55)->nullable($value = true);
+
             $table->rememberToken();
             $table->timestamps();
         });
