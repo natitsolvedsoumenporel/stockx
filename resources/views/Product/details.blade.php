@@ -25,7 +25,9 @@
                     <img src="{{URL::to('/').'/'.$fetch_details['imagepath'][0]['originalpath']}}" class="img-fluid" alt="" width="542" height="542">
                 </a>
                 @else
-                <a href="images/details-img3.jpg">
+
+                <a href="images/featured-d.png">
+
                     <img src="{{asset('assets/frontend/images/featured-d.png')}}" class="img-fluid" alt="" width="542" height="542">
                 </a>
                 @endif
