@@ -37,6 +37,8 @@ Route::any('/how_it_works_page', 'HomeController@how_it_works');
 Route::any('/get_subsizelist', 'ProductController@get_subsizelist');
 Route::any('/details/{id}', 'ProductController@details');
 Route::any('/allsize/{id}', 'ProductController@allsize');
+Route::any('/bid_sell/{uniqid}', 'ProductController@bid_sell');
+Route::any('/bid_buy/{uniqid}', 'ProductController@bid_buy');
 
 
 Route::any('/product_search', 'HomeController@product_search');
@@ -62,6 +64,8 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listcolor', ['as' => 'listemail', 'uses' => 'ColorController@listcolor'])->middleware('is_admin');
     Route::get('listbrand', ['as' => 'listbrand', 'uses' => 'BrandController@listbrand'])->middleware('is_admin');
     Route::get('listproduct', ['as' => 'listproduct', 'uses' => 'ProductController@listproduct'])->middleware('is_admin');
+    Route::get('listcms', ['as' => 'listcms', 'uses' => 'CmsController@listcms'])->middleware('is_admin');
+    Route::get('listcategorycms', ['as' => 'listcategorycms', 'uses' => 'CmscategoryController@listcategorycms'])->middleware('is_admin');
     
     
     
@@ -115,6 +119,7 @@ Route::group(['prefix'=>'admin',], function(){
     Route::any('/deleteattribute/{atb_id}', 'AttributeController@deleteattribute')->middleware('is_admin');
     Route::any('/deletesize/{atb_id}', 'SizeController@deletesize')->middleware('is_admin');
     Route::any('/deletesizenumber/{atb_id}', 'SizeController@deletesizenumber')->middleware('is_admin');
+
     
     Route::post('/saveparentcat', 'CategoryadminController@saveparentcat')->middleware('is_admin');
     Route::post('/saveparentcatedit/{cat_id}', 'CategoryadminController@saveparentcatedit')->middleware('is_admin');
@@ -132,6 +137,20 @@ Route::group(['prefix'=>'admin',], function(){
     Route::post('/editproductsave/{product_id}', 'ProductController@editproductsave')->middleware('is_admin');
     Route::any('/deleteproduct/{product_id}', 'ProductController@deleteproduct')->middleware('is_admin');
     Route::any('viewproduct/{product_id}', ['as' => 'viewproduct', 'uses' => 'ProductController@viewproduct'])->middleware('is_admin');
+
+    Route::get('addcms', ['as' => 'addsize', 'uses' => 'CmsController@addcms'])->middleware('is_admin');
+    Route::get('addcategorycms', ['as' => 'addcategorycms', 'uses' => 'CmscategoryController@addcategorycms'])->middleware('is_admin');
+    Route::any('editcms/{id}', ['as' => 'editcms', 'uses' => 'CmsController@editcms'])->middleware('is_admin');
+    Route::any('editcategorycms/{id}', ['as' => 'editcategorycms', 'uses' => 'CmscategoryController@editcategorycms'])->middleware('is_admin');
+    
+    Route::post('/savecmscategory', 'CmscategoryController@savecmscategory')->middleware('is_admin');
+    Route::post('/savecmscatedit/{id}', 'CmscategoryController@savecmscatedit')->middleware('is_admin');
+    Route::any('/deletecmscategory/{id}', 'CmscategoryController@deletecmscategory')->middleware('is_admin');
+
+    Route::post('/savecms', 'CmsController@savecms')->middleware('is_admin');
+    Route::post('/savecmsedit/{id}', 'CmsController@savecmsedit')->middleware('is_admin');
+    Route::any('/deletecms/{id}', 'CmsController@deletecms')->middleware('is_admin');
+    Route::any('/viewcms/{id}', 'CmsController@viewcms')->middleware('is_admin');
 });
 
 

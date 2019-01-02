@@ -72,6 +72,16 @@
 							</div>
 						</li>
 
+						<li>
+							<a href="#cmspage" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Cms Management</span> <i class="icon-submenu lnr lnr-chevron-right"></i></a>
+							<div id="cmspage" class="collapse ">
+								<ul class="nav">
+									<li><a href="{{ URL::to('admin/listcms') }}" class="">Page List</a></li>
+									<li><a href="{{ URL::to('admin/listcategorycms') }}" class="">Cms Category List</a></li>
+								</ul>
+							</div>
+						</li>
+
 <!--						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
 						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
 						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>-->

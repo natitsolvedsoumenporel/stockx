@@ -26,7 +26,7 @@
                 </a>
                 @else
                 <a href="images/details-img3.jpg">
-                    <img src="{{asset('assets/frontend/images/details-img3.jpg')}}" class="img-fluid" alt="" width="542" height="542">
+                    <img src="{{asset('assets/frontend/images/featured-d.png')}}" class="img-fluid" alt="" width="542" height="542">
                 </a>
                 @endif
             </div>
@@ -41,8 +41,8 @@
                 <?php } ?>
                 @else
                 <li>
-                    <a href="images/details-img2.jpg" data-standard="{{asset('assets/frontend/images/details-img2.jpg')}}">
-                        <img src="{{asset('assets/frontend/images/details-img2.jpg')}}" alt="">
+                    <a href="images/featured-d.png" data-standard="{{asset('assets/frontend/images/featured-d.png')}}">
+                        <img src="{{asset('assets/frontend/images/featured-d.png')}}" alt="">
                     </a>
                 </li>
                 @endif<!--
@@ -82,8 +82,8 @@
                     <div class="col-lg-4 col-6 pl-0">
                         <div class="text-center">
                             <h2>$<?php echo $fetch_details['highestbid']; ?></h2>
-                            <h6>Highest Bid</h6>
-                            <button class="size-bt">SELL <i class="fa fa-long-arrow-alt-right"></i></button>
+                            <h6 class="mb-3">Highest Bid</h6>
+                            <a href="/bid_sell/<?php echo $fetch_details['pro_uni_id']; ?>" class="size-bt">SELL <i class="fa fa-long-arrow-alt-right"></i></a>
                             <div class="size sm d-flex align-items-center mt-2">
                                 <p>Size: 11 </p>
                                 <div class="line"></div>
@@ -94,8 +94,8 @@
                     <div class="col-lg-4 col-6">
                         <div class="text-center">
                             <h2>$<?php echo $fetch_details['lowestask']; ?></h2>
-                            <h6>Lowest Ask</h6>
-                            <button class="size-bt active">BUY <i class="fa fa-long-arrow-alt-right"></i></button>
+                            <h6 class="mb-3">Lowest Ask</h6>
+                            <a href="/bid_buy/<?php echo $fetch_details['pro_uni_id']; ?>" class="size-bt active">BUY <i class="fa fa-long-arrow-alt-right"></i></a>
                             <div class="size sm d-flex align-items-center mt-2">
                                 <p>Size: 11 </p>
                                 <div class="line"></div>
@@ -106,9 +106,9 @@
                 </div>
 
                 <div class="row grey-bt mt-5">
-                    <a href="{{URL::to('/').'/'.$fetch_details['fblink']}}" class="mr-lg-3"><i class="fa fa-share-alt"></i>SHARE</a>
-                    <a href="{{URL::to('/').'/'.$fetch_details['twitterlink']}}" class="mr-lg-3"><i class="fa fa-share-alt"></i>SHARE</a>
-                    <a href="{{URL::to('/').'/'.$fetch_details['pinterest']}}"><i class="fa fa-share-alt"></i>SHARE</a>
+                    <a href="{{URL::to('/').'/'.$fetch_details['fblink']}}" class="mr-lg-3"><i class="fa fa-share-alt"></i>FACEBOOK</a>
+                    <a href="{{URL::to('/').'/'.$fetch_details['twitterlink']}}" class="mr-lg-3"><i class="fa fa-share-alt"></i>TWITTER</a>
+                    <a href="{{URL::to('/').'/'.$fetch_details['pinterest']}}"><i class="fa fa-share-alt"></i>PINTERST</a>
                 </div>
 
                 <div class="row mt-5 size sm">
@@ -153,7 +153,7 @@
                     @if(!empty($pval['imagepath']))
                     <img class="img-fluid" src="{{URL::to('/').'/'.$pval['imagepath'][0]['originalpath']}}" alt="">														
                     @else
-                    <img class="img-fluid" src="{{asset('assets/frontend/images/featured-e.png')}}" alt="">														
+                    <img class="img-fluid" src="{{asset('assets/frontend/images/featured-d.png')}}" alt="">														
                     @endif
                 </div>
                 <div class="most-popu-text">

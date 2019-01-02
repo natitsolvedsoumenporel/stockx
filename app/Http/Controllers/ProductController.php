@@ -296,5 +296,27 @@ class ProductController extends Controller
     
         }
     }
+
+    public function bid_sell($uniqid = null){
+        $product_unique_id = $uniqid;
+        $product_details = Product::with('imagepath','parentcategory','childcategory','brandname')
+        ->where("pro_uni_id",$product_unique_id)
+        ->orderByDesc('product_id')
+        ->first()
+        ->toArray();
+        // print_r($product_details); exit;
+        return view('Product.bid_sell',compact('product_details'));
+    }
+
+    public function bid_buy($uniqid = null){
+        $product_unique_id = $uniqid;
+        $product_details = Product::with('imagepath','parentcategory','childcategory','brandname')
+        ->where("pro_uni_id",$product_unique_id)
+        ->orderByDesc('product_id')
+        ->first()
+        ->toArray();
+        // print_r($product_details); exit;
+        return view('Product.bid_sell',compact('product_details'));
+    }
     
 }
