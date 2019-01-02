@@ -25,8 +25,8 @@
                     <img src="{{URL::to('/').'/'.$fetch_details['imagepath'][0]['originalpath']}}" class="img-fluid" alt="" width="542" height="542">
                 </a>
                 @else
-                <a href="images/details-img3.jpg">
-                    <img src="{{asset('assets/frontend/images/details-img3.jpg')}}" class="img-fluid" alt="" width="542" height="542">
+                <a href="images/featured-d.png">
+                    <img src="{{asset('assets/frontend/images/featured-d.png')}}" class="img-fluid" alt="" width="542" height="542">
                 </a>
                 @endif
             </div>
@@ -41,8 +41,8 @@
                 <?php } ?>
                 @else
                 <li>
-                    <a href="images/details-img2.jpg" data-standard="{{asset('assets/frontend/images/details-img2.jpg')}}">
-                        <img src="{{asset('assets/frontend/images/details-img2.jpg')}}" alt="">
+                    <a href="images/featured-d.png" data-standard="{{asset('assets/frontend/images/featured-d.png')}}">
+                        <img src="{{asset('assets/frontend/images/featured-d.png')}}" alt="">
                     </a>
                 </li>
                 @endif<!--
