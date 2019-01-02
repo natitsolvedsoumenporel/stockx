@@ -61,6 +61,7 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listemail', ['as' => 'listemail', 'uses' => 'EmailtemplateController@listemail'])->middleware('is_admin');
     Route::get('listcolor', ['as' => 'listemail', 'uses' => 'ColorController@listcolor'])->middleware('is_admin');
     Route::get('listbrand', ['as' => 'listbrand', 'uses' => 'BrandController@listbrand'])->middleware('is_admin');
+    Route::get('listproduct', ['as' => 'listproduct', 'uses' => 'ProductController@listproduct'])->middleware('is_admin');
     
     
     
@@ -124,6 +125,13 @@ Route::group(['prefix'=>'admin',], function(){
     Route::post('/saveuseredit/{u_id}', 'UseradminController@saveuseredit')->middleware('is_admin');
     Route::post('/savesubcatedit/{cat_id}', 'CategoryadminController@savesubcatedit')->middleware('is_admin');
     Route::get('/deletecategory/{cat_id}/{cat_type}', 'CategoryadminController@deletecategory')->middleware('is_admin');
+
+    Route::get('addproduct', ['as' => 'addproduct', 'uses' => 'ProductController@addproduct'])->middleware('is_admin');
+    Route::any('editproduct/{product_id}', ['as' => 'editproduct', 'uses' => 'ProductController@editproduct'])->middleware('is_admin');
+    Route::post('/addproductsave', 'ProductController@addproductsave')->middleware('is_admin');
+    Route::post('/editproductsave/{product_id}', 'ProductController@editproductsave')->middleware('is_admin');
+    Route::any('/deleteproduct/{product_id}', 'ProductController@deleteproduct')->middleware('is_admin');
+    Route::any('viewproduct/{product_id}', ['as' => 'viewproduct', 'uses' => 'ProductController@viewproduct'])->middleware('is_admin');
 });
 
 

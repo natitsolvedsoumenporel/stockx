@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPaymentKeyColumnsToUsersTable extends Migration
+class AddLowestaskToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPaymentKeyColumnsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('payment_key')->nullable($value = true);
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('lowestask');
         });
     }
 
@@ -25,8 +25,8 @@ class AddPaymentKeyColumnsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('payment_key');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('lowestask');
         });
     }
 }

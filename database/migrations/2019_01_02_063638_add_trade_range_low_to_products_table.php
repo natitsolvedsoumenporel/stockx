@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrandTable extends Migration
+class AddTradeRangeLowToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateBrandTable extends Migration
      */
     public function up()
     {
-        Schema::table('brands', function (Blueprint $table) {
-            //$table->increments('id');
-            $table->string('brand_name');
-            $table->integer('is_active');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('trade_range_low');
         });
     }
 
@@ -29,7 +25,7 @@ class CreateBrandTable extends Migration
      */
     public function down()
     {
-        Schema::table('brands', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

@@ -194,18 +194,22 @@
                                         <img class="img-fluid" src="{{asset('assets/frontend/images/hammer.png')}}" alt="">									 
                                     </a>
                                 </div>
-                                <img class="img-fluid" src="{{asset('assets/frontend/images/featured-d.png')}}" alt="">
+                                @if(!empty($pValue['imagepath']))
+                                <img class="img-fluid" src="{{URL::to('/').'/'.$pValue['imagepath'][0]['originalpath']}}" alt="">                           
+                                @else
+                                <img class="img-fluid" src="{{asset('assets/frontend/images/featured-d.png')}}" alt="">                           
+                                @endif
 
                             </div>
                             <div class="most-popu-text">
-                                <h4><a  style="color:black" href="details/<?php echo $pValue['pro_uni_id']; ?>"><?php echo $pValue->p_name; ?></a></h4>
+                                <h4><a  style="color:black" href="details/<?php echo $pValue['pro_uni_id']; ?>"><?php echo $pValue['p_name']; ?></a></h4>
                                 <div class="most-popu-text-btm">
                                     <span class="most-popu-text-btm-lt">
                                         <p>LOWEST ASK</p>
-                                        <h1>$<?php echo $pValue->lowestask; ?></h1>
+                                        <h1>$<?php echo $pValue['lowestask']; ?></h1>
                                     </span>
                                     <span class="most-popu-text-btm-rt">
-                                        <h6>$<?php echo $pValue->price; ?> Sold</h6>
+                                        <h6>$<?php echo $pValue['price']; ?> Sold</h6>
                                     </span>
                                 </div>
                             </div>

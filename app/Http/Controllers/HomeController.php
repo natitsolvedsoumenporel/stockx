@@ -72,14 +72,29 @@ class HomeController extends Controller
         $group_product = array();
         if(!empty($search_text)){
             $brand_fetch = Brand::where('is_active',1)->where('brand_name',strtolower($search_text))->get()->first()->toArray();
-            $fetchAllProduct = DB::table('products')->where('is_active',1)->where('brand_id',$brand_fetch['id'])->get();
+            
+            $fetchAllProduct = Product::with('imagepath')
+            ->where('is_active',1)
+            ->where('brand_id',$brand_fetch['id'])
+            ->orderByDesc('product_id')
+            ->get()
+            ->toArray();
+
+            // $fetchAllProduct = DB::table('products')->where('is_active',1)->where('brand_id',$brand_fetch['id'])->get();
             if(count($fetchAllProduct) >0){
                $fetchAllProduct = $fetchAllProduct->toArray(); 
                $group_product = array_chunk($fetchAllProduct,3);
             }
         }else{
-            $fetchAllProduct = DB::table('products')->where('is_active',1)->get()->toArray();
+            $fetchAllProduct = Product::with('imagepath')
+            ->where('is_active',1)
+            ->orderByDesc('product_id')
+            ->get()
+            ->toArray();
+
+            // $fetchAllProduct = DB::table('products')->where('is_active',1)->get()->toArray();
             $group_product = array_chunk($fetchAllProduct,3);
+
         }
         
         
@@ -193,7 +208,7 @@ class HomeController extends Controller
                                         <img class="img-fluid" src="assets/frontend/images/featured-d.png" alt="">
                                     </div>
                                     <div class="most-popu-text">
-                                        <h4><a href="details/'.$resultVal->pro_uni_id.'">'.$resultVal->p_name.'</a></h4>
+                                        <h4><a style="color:black" href="details/'.$resultVal->pro_uni_id.'">'.$resultVal->p_name.'</a></h4>
                                         <div class="most-popu-text-btm">
                                             <span class="most-popu-text-btm-lt">
                                                 <p>LOWEST ASK</p>

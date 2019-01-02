@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCurrencyColumnsToUsersTable extends Migration
+class AddConditionToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCurrencyColumnsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('currency')->nullable($value = true);
+        Schema::table('products', function (Blueprint $table) {
+            $table->char('condition',255)->nullable($value = true);
         });
     }
 
@@ -25,8 +25,8 @@ class AddCurrencyColumnsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('currency');
+        Schema::table('products', function (Blueprint $table) {
+            //
         });
     }
 }

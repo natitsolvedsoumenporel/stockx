@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNumbersizeTable extends Migration
+class AddTradeRangeHighToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateNumbersizeTable extends Migration
      */
     public function up()
     {
-        Schema::table('numbersizes', function (Blueprint $table) {
-            //$table->increments('id');
-            $table->integer('size_number');
-            $table->integer('size_type_id');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('trade_range_high');
         });
     }
 
@@ -29,7 +25,7 @@ class CreateNumbersizeTable extends Migration
      */
     public function down()
     {
-        Schema::table('numbersizes', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }
