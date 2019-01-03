@@ -71,18 +71,18 @@ class HomeController extends Controller
         $fetchAllProduct = array();
         $group_product = array();
         if(!empty($search_text)){
-            $brand_fetch = Brand::where('is_active',1)->where('brand_name',strtolower($search_text))->get()->first()->toArray();
+            $brand_fetch = Brand::where('is_active',1)->where('brand_name',strtolower($search_text))->first()->toArray();
             
             $fetchAllProduct = Product::with('imagepath')
             ->where('is_active',1)
-            ->where('brand_id',$brand_fetch['id'])
+            ->where('brand_id',1)
             ->orderByDesc('product_id')
             ->get()
             ->toArray();
 
             // $fetchAllProduct = DB::table('products')->where('is_active',1)->where('brand_id',$brand_fetch['id'])->get();
             if(count($fetchAllProduct) >0){
-               $fetchAllProduct = $fetchAllProduct->toArray(); 
+               // $fetchAllProduct = $fetchAllProduct->toArray(); 
                $group_product = array_chunk($fetchAllProduct,3);
             }
         }else{

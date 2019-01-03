@@ -12,6 +12,7 @@ use Session;
 use Validator;
 use App\User;
 use App\siteSetting;
+use App\Order;
 
 
 class UseradminController extends Controller
@@ -40,7 +41,7 @@ class UseradminController extends Controller
             Session::flash('message', 'Successfully Logged In.');
             return redirect('admin/dashboard');
         }else{
-            Session::flash('message', 'Invalid Email ID or Password');
+            Session::flash('message', 'The value is not a valid email addressPlease enter a valid email address');
             return redirect('/admin');
         }
     }
@@ -274,5 +275,65 @@ class UseradminController extends Controller
         Auth::logout();
         Session::flash('message', 'Successfully Logged out.');
         return redirect('/admin');
+    }
+
+
+    public function listsellers(){
+        $user = User::find(Auth::user()->id);
+        
+        $list_sellers = Order::with('userdetails','productdetails')
+        ->where('order_type','S')
+        ->get()
+        ->toArray();
+        // print_r($list_sellers); exit;
+        return view('Useradmin.listsellers',compact('user','list_sellers'));
+    }
+
+    public function listbuyers(){
+        $user = User::find(Auth::user()->id);
+        
+        $list_buyers = Order::with('userdetails','productdetails')
+        ->where('order_type','B')
+        ->get()
+        ->toArray();
+        //print_r($list_buyers); exit;
+        return view('Useradmin.listbuyers',compact('user','list_buyers'));
+    }
+
+    public function listseller($id = null){
+        
+        if($id == 1){
+            $order =  'id';
+        }elseif ($id == 2) {
+            $order =  'order_date';
+        }elseif ($id == 3) {
+            $order =  'order_date';
+        }
+        $list_sellers = Order::with('userdetails','productdetails')
+        ->where('order_type','S')
+        ->orderByDesc($order)
+        ->get()
+        ->toArray();
+        // print_r($list_sellers); exit;
+        return view('Useradmin.listsellers',compact('user','list_sellers'));
+    }
+
+    public function listbuyer($id = null){
+        $user = User::find(Auth::user()->id);
+        
+        if($id == 1){
+            $order =  'id';
+        }elseif ($id == 2) {
+            $order =  'order_date';
+        }elseif ($id == 3) {
+            $order =  'order_date';
+        }
+        $list_buyers = Order::with('userdetails','productdetails')
+        ->where('order_type','B')
+        ->orderByDesc($order)
+        ->get()
+        ->toArray();
+        // print_r($list_sellers); exit;
+        return view('Useradmin.listbuyers',compact('user','list_buyers'));
     }
 }

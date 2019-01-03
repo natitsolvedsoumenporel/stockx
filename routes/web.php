@@ -66,8 +66,12 @@ Route::group(['prefix'=>'admin',], function(){
     Route::get('listproduct', ['as' => 'listproduct', 'uses' => 'ProductController@listproduct'])->middleware('is_admin');
     Route::get('listcms', ['as' => 'listcms', 'uses' => 'CmsController@listcms'])->middleware('is_admin');
     Route::get('listcategorycms', ['as' => 'listcategorycms', 'uses' => 'CmscategoryController@listcategorycms'])->middleware('is_admin');
+    Route::get('listsellers', ['as' => 'listsellers', 'uses' => 'UseradminController@listsellers'])->middleware('is_admin');
+    Route::get('listbuyers', ['as' => 'listbuyers', 'uses' => 'UseradminController@listbuyers'])->middleware('is_admin');
     
     
+    Route::any('listseller/{id}', ['as' => 'listseller', 'uses' => 'UseradminController@listseller'])->middleware('is_admin');
+    Route::any('listbuyer/{id}', ['as' => 'listbuyer', 'uses' => 'UseradminController@listbuyer'])->middleware('is_admin');
     
     Route::get('addparentcategory', ['as' => 'addparentcategory', 'uses' => 'CategoryadminController@addparentcategory'])->middleware('is_admin');
     Route::any('editcategory/{cate_id}', ['as' => 'editcategory', 'uses' => 'CategoryadminController@editcategory'])->middleware('is_admin');

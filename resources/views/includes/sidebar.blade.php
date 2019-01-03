@@ -72,6 +72,9 @@
 							</div>
 						</li>
 
+						<li><a href="{{ URL::to('admin/listsellers') }}" class="@if(URL::to('admin/listsellers') == URL::current()) active @endif"><i class="lnr lnr-bookmark"></i> <span>Manage Selling</span></a></li>
+						<li><a href="{{ URL::to('admin/listbuyers') }}" class="@if(URL::to('admin/listbuyers') == URL::current()) active @endif"><i class="lnr lnr-bookmark"></i> <span>Manage Buying</span></a></li>
+
 						<li>
 							<a href="#cmspage" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Cms Management</span> <i class="icon-submenu lnr lnr-chevron-right"></i></a>
 							<div id="cmspage" class="collapse ">

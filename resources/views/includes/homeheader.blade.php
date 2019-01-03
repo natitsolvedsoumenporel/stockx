@@ -12,10 +12,10 @@
 					</li> 
 				</ul>
 				
-
+				
 				<ul class="navbar-nav right-navbar ml-auto">
 					<li class="nav-item  active">
-						<a class="nav-link" href="#"> Browse </a>
+						<a class="nav-link " href="#"> Browse </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#" > News </a>						
@@ -48,6 +48,7 @@
                         </div>
 		</div>
 	</nav>
+
 
 
 

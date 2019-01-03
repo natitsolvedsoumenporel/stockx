@@ -63,7 +63,8 @@
 
                                         <div class="form-check">
                                             <input type="checkbox" name="agree" class="form-check-input" id="exampleCheck1" required="required">
-                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                            <label class="form-check-label" for="exampleCheck1">By signing up, you agree to the &nbsp;<a href="/terms"><strong>Terms of Service</strong></a> and &nbsp;<a href="/privacy"><strong>Privacy Policy</strong></a>.</label>
+                                            <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
                                         </div>
 
                                         <div class="text-center mt-4 mb-4">

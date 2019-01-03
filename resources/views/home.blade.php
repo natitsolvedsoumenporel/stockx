@@ -3,7 +3,7 @@
 @section('content')
 <section class="home-banner">
     <div class="container">
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-lg-6 col-md-6 px-0 text-left">					
                 <h1>Shoes Turn</h1>
                 <h1 class="mt-0">It Down</h1>
